@@ -47,32 +47,64 @@ export const SERVICE_DETAILS = {
     tools: ['TensorFlow', 'Neural Behavioral Models', 'DCO Engines'],
     roi: { en: 'Average 45% uplift in LTV.', ar: 'متوسط زيادة 45% في القيمة الدائمة للعميل.' },
     features: {
-      en: ['Behavioral Cohort Synthesis', 'Real-time Offer Mapping', '1:1 Journey Orchestration'],
-      ar: ['توليف المجموعات السلوكية', 'رسم خرائط العروض في الوقت الفعلي', 'تنظيم رحلة 1:1']
+      en: [
+        { name: 'Behavioral Cohort Synthesis', explanation: 'Using high-dimensional neural clusters to group customers by intent rather than just age or location.' },
+        { name: 'Real-time Offer Mapping', explanation: 'Dynamic pricing and promotion logic that adapts instantly based on current session browsing velocity.' },
+        { name: '1:1 Journey Orchestration', explanation: 'A seamless bridge across web, mobile, and physical touchpoints, ensuring the brand remembers every preference.' }
+      ],
+      ar: [
+        { name: 'توليف المجموعات السلوكية', explanation: 'استخدام المجموعات العصبية عالية الأبعاد لتجميع العملاء حسب النية بدلاً من مجرد العمر أو الموقع.' },
+        { name: 'رسم خرائط العروض في الوقت الفعلي', explanation: 'منطق التسعير والترويج الديناميكي الذي يتكيف فوراً بناءً على سرعة تصفح الجلسة الحالية.' },
+        { name: 'تنظيم رحلة 1:1', explanation: 'جسر سلس عبر نقاط اتصال الويب والهاتف والمادية، مما يضمن تذكر العلامة التجارية لكل تفضيل.' }
+      ]
     }
   },
   'predictive-analytics': {
     tools: ['BigQuery ML', 'Sentiment Scrapers', 'Time-Series Forecasting'],
     roi: { en: 'Reduce 30% of marketing waste.', ar: 'تقليل 30% من هدر التسويق.' },
     features: {
-      en: ['Demand Heatmaps', 'Churn Risk Detection', 'Sentiment Analysis'],
-      ar: ['خرائط الطلب الحرارية', 'كشف مخاطر التوقف', 'تحليل المشاعر']
+      en: [
+        { name: 'Demand Heatmaps', explanation: 'Predictive geographic mapping of where your next luxury property or retail sale is most likely to occur in Qatar.' },
+        { name: 'Churn Risk Detection', explanation: 'Early-warning systems that identify declining engagement patterns before the customer actually leaves.' },
+        { name: 'Sentiment Analysis', explanation: 'Localized NLP that parses social conversations in Qatari dialects to gauge real-time market sentiment.' }
+      ],
+      ar: [
+        { name: 'خرائط الطلب الحرارية', explanation: 'رسم خرائط جغرافية تنبؤية لمكان احتمال حدوث عملية بيع العقارات الفاخرة أو التجزئة التالية في قطر.' },
+        { name: 'كشف مخاطر التوقف', explanation: 'أنظمة إنذار مبكر تحدد أنماط المشاركة المتناقصة قبل أن يغادر العميل فعلياً.' },
+        { name: 'تحليل المشاعر', explanation: 'معالجة لغات طبيعية محلية تحلل المحادثات الاجتماعية باللهجات القطرية لقياس معنويات السوق في الوقت الفعلي.' }
+      ]
     }
   },
   'content-automation': {
     tools: ['Khaleeji LLMs', 'Localized Diffusion', 'A/B Visual Logic'],
     roi: { en: '10x faster asset production.', ar: 'إنتاج أصول أسرع بـ 10 مرات.' },
     features: {
-      en: ['Dialect-Aware Copywriting', 'Culturally Sensitive Vision', 'Dynamic Localization'],
-      ar: ['كتابة نصوص تراعي اللهجة', 'رؤية تراعي الثقافة', 'تعريب ديناميكي']
+      en: [
+        { name: 'Dialect-Aware Copywriting', explanation: 'LLMs fine-tuned specifically on Qatari linguistic nuances to ensure authentic, non-generic Arabic copy.' },
+        { name: 'Culturally Sensitive Vision', explanation: 'Image generators constrained by Middle Eastern aesthetic values, respecting local architectural and clothing styles.' },
+        { name: 'Dynamic Localization', explanation: 'Automated adaptation of global campaign assets into high-converting local variations at scale.' }
+      ],
+      ar: [
+        { name: 'كتابة نصوص تراعي اللهجة', explanation: 'نماذج لغوية ضخمة مضبوطة بدقة على الفوارق اللغوية القطرية لضمان نصوص عربية أصيلة وغير عامة.' },
+        { name: 'رؤية تراعي الثقافة', explanation: 'مولدات صور مقيدة بالقيم الجمالية الشرق أوسطية، مع احترام الأنماط المعمارية والملابس المحلية.' },
+        { name: 'تعريب ديناميكي', explanation: 'تكييف آلي لأصول الحملات العالمية إلى أشكال محلية عالية التحويل على نطاق واسع.' }
+      ]
     }
   },
   'omnichannel-growth': {
     tools: ['WhatsApp API', 'Identity Resolution', 'Hyper-Local SEO'],
     roi: { en: '3.2x higher attribution accuracy.', ar: 'دقة إسناد أعلى بـ 3.2 مرة.' },
     features: {
-      en: ['Automated Lead Qualification', 'Cross-Network Retargeting', 'Doha Search Dominance'],
-      ar: ['تأهيل العملاء المحتملين آلياً', 'إعادة الاستهداف عبر الشبكات', 'هيمنة البحث في الدوحة']
+      en: [
+        { name: 'Automated Lead Qualification', explanation: 'Intelligent WhatsApp bots that score and route leads based on potential lifetime value (LTV).' },
+        { name: 'Cross-Network Retargeting', explanation: 'Predictive retargeting that follows users across Instagram, Snapchat, and local news portals intelligently.' },
+        { name: 'Doha Search Dominance', explanation: 'Hyper-local SEO strategies optimized for Qatar-specific search queries in both English and Arabic.' }
+      ],
+      ar: [
+        { name: 'تأهيل العملاء المحتملين آلياً', explanation: 'بوتات واتساب ذكية تسجل وتوجه العملاء المحتملين بناءً على القيمة الدائمة المحتملة (LTV).' },
+        { name: 'إعادة الاستهداف عبر الشبكات', explanation: 'إعادة استهداف تنبؤية تتبع المستخدمين عبر إنستغرام وسناب شات وبوابات الأخبار المحلية بذكاء.' },
+        { name: 'هيمنة البحث في الدوحة', explanation: 'استراتيجيات تحسين محركات بحث محلية للغاية محسنة لاستعلامات البحث الخاصة بقطر باللغتين الإنجليزية والعربية.' }
+      ]
     }
   }
 };
