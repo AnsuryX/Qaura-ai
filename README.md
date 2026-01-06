@@ -40,3 +40,27 @@ npm run dev
 Notes:
 - `functions/genai.ts` contains a development fallback that returns mocked responses when `GEMINI_API_KEY` is not set so the UI remains functional after deploy. If you provide `GEMINI_API_KEY`, update `functions/genai.ts` to perform the provider REST call (Edge/Fetch compatible).
 - Avoid importing server-only Node libraries in client files (the earlier `@google/genai` import was moved into serverless functions). Keep integrations inside `functions/` or other server-only places.
+
+## Security — setting your API key
+
+- Do NOT commit API keys into the repository. Add the key to Cloudflare Pages (recommended) or a local `.env.local` file that is listed in `.gitignore`.
+
+Local (development) examples
+
+Windows PowerShell (session variable, ephemeral):
+```powershell
+$env:GEMINI_API_KEY = "your_api_key_here"
+npm run dev
+```
+
+Local (persistent for dev): create a `.env.local` at the project root (DO NOT commit):
+```
+GEMINI_API_KEY=your_api_key_here
+```
+
+Cloudflare Pages
+
+- In the Pages project UI go to Settings → Environment variables and add `GEMINI_API_KEY` with your secret value.
+- The Edge function `functions/genai.ts` will read `env.GEMINI_API_KEY` at runtime. If it is not present the function returns a mocked response to keep the UI functional.
+
+If you'd like, I can implement the real GenAI REST proxy in `functions/genai.ts` (Edge/Fetch compatible) once you confirm which provider endpoint to use. I will not store the key in the repo.

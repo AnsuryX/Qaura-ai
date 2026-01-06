@@ -1,4 +1,12 @@
-# Logs
+node_modules/
+dist/
+.env.local
+.env
+/.cache
+/.vite
+# Optional editor files
+.DS_Store
+Thumbs.db# Logs
 logs
 *.log
 npm-debug.log*
