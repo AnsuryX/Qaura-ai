@@ -17,7 +17,8 @@ import {
   ChevronLeft,
   Sparkles,
   Loader2,
-  Orbit
+  Orbit,
+  Info
 } from 'lucide-react';
 import Navbar from './components/Navbar';
 import StrategyGenerator from './components/StrategyGenerator';
@@ -30,6 +31,7 @@ const App: React.FC = () => {
   const [lang, setLang] = useState<Language>('en');
   const [activeService, setActiveService] = useState<string>(SERVICES[0].id);
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
 
   // Form State
   const [contactForm, setContactForm] = useState({ name: '', company: '', email: '', budget: '10,000 - 50,000', message: '' });
@@ -184,7 +186,10 @@ const App: React.FC = () => {
               {SERVICES.map((s) => (
                 <div 
                   key={s.id}
-                  onMouseEnter={() => setActiveService(s.id)}
+                  onMouseEnter={() => {
+                    setActiveService(s.id);
+                    setHoveredFeature(null);
+                  }}
                   onClick={() => setActiveService(s.id)}
                   className={`p-6 rounded-2xl cursor-pointer transition-all border ${activeService === s.id ? 'glass border-cyan-500/50 scale-[1.02] opacity-100 shadow-[0_0_20px_rgba(34,211,238,0.1)]' : 'border-transparent opacity-40 grayscale hover:opacity-60'}`}
                 >
@@ -235,9 +240,31 @@ const App: React.FC = () => {
                     <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">{t.featuresLabel}</h4>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].features[lang].map((f, idx) => (
-                        <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-white/5 hover:border-cyan-500/30 transition-all flex items-center space-x-3 rtl:space-x-reverse group/feat">
-                          <CheckCircle2 size={16} className="text-cyan-500 shrink-0" />
-                          <span className="text-xs font-medium text-slate-300 group-hover/feat:text-white">{f}</span>
+                        <div 
+                          key={idx} 
+                          onMouseEnter={() => setHoveredFeature(idx)}
+                          onMouseLeave={() => setHoveredFeature(null)}
+                          className="relative group/feat"
+                        >
+                          <div className="p-4 bg-slate-900/50 rounded-xl border border-white/5 group-hover/feat:border-cyan-500/30 transition-all flex items-center space-x-3 rtl:space-x-reverse h-full cursor-help">
+                            <CheckCircle2 size={16} className="text-cyan-500 shrink-0" />
+                            <span className="text-xs font-medium text-slate-300 group-hover/feat:text-white transition-colors">{f.name}</span>
+                          </div>
+                          
+                          {/* Interactive Tooltip */}
+                          {hoveredFeature === idx && (
+                            <div className={`absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-64 p-5 glass rounded-2xl border-cyan-500/40 shadow-[0_10px_30px_rgba(0,0,0,0.5),0_0_15px_rgba(34,211,238,0.2)] z-[60] animate-in fade-in slide-in-from-bottom-2 duration-300 pointer-events-none`}>
+                              <div className="flex items-center space-x-2 rtl:space-x-reverse mb-2">
+                                <Info size={14} className="text-cyan-400" />
+                                <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400">{lang === 'en' ? 'Insight' : 'بصيرة'}</span>
+                              </div>
+                              <p className="text-xs text-slate-200 leading-relaxed font-medium">
+                                {f.explanation}
+                              </p>
+                              {/* Arrow */}
+                              <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-cyan-500/40"></div>
+                            </div>
+                          )}
                         </div>
                       ))}
                     </div>
