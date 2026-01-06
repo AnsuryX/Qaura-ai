@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, User, Loader2, Headset, CheckCircle } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, User, Loader2, Headset, CheckCircle, Trash2 } from 'lucide-react';
 import { chatWithAura } from '../services/geminiService';
 
 interface Message {
@@ -8,11 +8,11 @@ interface Message {
   text: string;
 }
 
+const STORAGE_KEY = 'ansury_chat_history';
+
 const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', text: 'Protocol initialized. I am Ansur. How can I facilitate your market domination today?' }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showHandoverForm, setShowHandoverForm] = useState(false);
@@ -20,7 +20,30 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
   const [handoverStatus, setHandoverStatus] = useState<'idle' | 'sending' | 'success'>('idle');
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Load history from localStorage on mount
   useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setMessages(parsed);
+        } else {
+          setMessages([{ role: 'model', text: 'Protocol initialized. I am Ansur. How can I facilitate your market domination today?' }]);
+        }
+      } catch (e) {
+        setMessages([{ role: 'model', text: 'Protocol initialized. I am Ansur. How can I facilitate your market domination today?' }]);
+      }
+    } else {
+      setMessages([{ role: 'model', text: 'Protocol initialized. I am Ansur. How can I facilitate your market domination today?' }]);
+    }
+  }, []);
+
+  // Save messages to localStorage whenever they change
+  useEffect(() => {
+    if (messages.length > 0) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    }
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
@@ -31,10 +54,11 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
 
     const userMsg = input;
     setInput('');
-    setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
+    const newMessages: Message[] = [...messages, { role: 'user', text: userMsg }];
+    setMessages(newMessages);
     setIsLoading(true);
 
-    const history = messages.map(m => ({ role: m.role, parts: [{ text: m.text }] }));
+    const history = newMessages.map(m => ({ role: m.role, parts: [{ text: m.text }] }));
     const response = await chatWithAura(history, userMsg);
     
     setMessages(prev => [...prev, { role: 'model', text: response || '' }]);
@@ -43,6 +67,14 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
 
   const handleHandoverRequest = () => {
     setShowHandoverForm(true);
+  };
+
+  const clearHistory = () => {
+    if (window.confirm('Are you sure you want to purge current neural history?')) {
+      const initialMsg: Message[] = [{ role: 'model', text: 'Neural buffer purged. Protocol re-initialized. How can I assist?' }];
+      setMessages(initialMsg);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(initialMsg));
+    }
   };
 
   const submitHandoverLead = async (e: React.FormEvent) => {
@@ -102,13 +134,22 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
                 </div>
               </div>
             </div>
-            <button 
-              onClick={handleHandoverRequest} 
-              className="p-2 hover:bg-white/10 rounded-xl text-cyan-400 transition-all group"
-              title="Request Strategic Handover"
-            >
-              <Headset size={20} className="group-hover:scale-110" />
-            </button>
+            <div className="flex items-center space-x-1">
+              <button 
+                onClick={clearHistory}
+                className="p-2 hover:bg-red-500/10 rounded-xl text-slate-500 hover:text-red-400 transition-all"
+                title="Purge History"
+              >
+                <Trash2 size={16} />
+              </button>
+              <button 
+                onClick={handleHandoverRequest} 
+                className="p-2 hover:bg-white/10 rounded-xl text-cyan-400 transition-all group"
+                title="Request Strategic Handover"
+              >
+                <Headset size={20} className="group-hover:scale-110" />
+              </button>
+            </div>
           </div>
 
           {/* Messages */}
