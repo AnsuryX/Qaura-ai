@@ -29,13 +29,13 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
         if (Array.isArray(parsed) && parsed.length > 0) {
           setMessages(parsed);
         } else {
-          setMessages([{ role: 'model', text: 'Protocol initialized. I am Ansur. How can I facilitate your market domination today?' }]);
+          setMessages([{ role: 'model', text: 'Protocol initiated. I am Ansur. What is the single biggest bottleneck currently stopping your business from scaling in Qatar?' }]);
         }
       } catch (e) {
-        setMessages([{ role: 'model', text: 'Protocol initialized. I am Ansur. How can I facilitate your market domination today?' }]);
+        setMessages([{ role: 'model', text: 'Protocol initiated. I am Ansur. What is the single biggest bottleneck currently stopping your business from scaling in Qatar?' }]);
       }
     } else {
-      setMessages([{ role: 'model', text: 'Protocol initialized. I am Ansur. How can I facilitate your market domination today?' }]);
+      setMessages([{ role: 'model', text: 'Protocol initiated. I am Ansur. What is the single biggest bottleneck currently stopping your business from scaling in Qatar?' }]);
     }
   }, []);
 
@@ -71,7 +71,7 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
 
   const clearHistory = () => {
     if (window.confirm('Are you sure you want to purge current neural history?')) {
-      const initialMsg: Message[] = [{ role: 'model', text: 'Neural buffer purged. Protocol re-initialized. How can I assist?' }];
+      const initialMsg: Message[] = [{ role: 'model', text: 'Neural buffer purged. Protocol re-initialized. What is the core challenge you are facing today?' }];
       setMessages(initialMsg);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(initialMsg));
     }
@@ -158,7 +158,7 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] p-4 rounded-2xl text-sm leading-relaxed ${
                   m.role === 'user' 
-                  ? 'bg-cyan-500 text-slate-900 font-bold rounded-tr-none shadow-[0_4px_15px_rgba(34,211,238,0.2)]' 
+                  ? 'bg-cyan-500 text-slate-900 font-bold rounded-tr-none shadow-[0_4px_15_rgba(34,211,238,0.2)]' 
                   : 'bg-slate-900/80 border border-white/5 text-slate-200 rounded-tl-none'
                 }`}>
                   {m.text}

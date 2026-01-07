@@ -1,13 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { 
-  Rocket, 
   ChevronRight, 
   ArrowRight, 
-  Cpu, 
-  BarChart3, 
-  Globe, 
-  Zap, 
   Play, 
   CheckCircle2,
   Mail,
@@ -18,7 +13,11 @@ import {
   Sparkles,
   Loader2,
   Orbit,
-  Info
+  Info,
+  LayoutTemplate,
+  BrainCircuit,
+  Zap,
+  LineChart
 } from 'lucide-react';
 import Navbar from './components/Navbar';
 import StrategyGenerator from './components/StrategyGenerator';
@@ -83,54 +82,54 @@ const App: React.FC = () => {
   const getIcon = (iconName: string, size = 32, active = false) => {
     const color = active ? 'text-slate-900' : 'text-cyan-400';
     switch (iconName) {
-      case 'Cpu': return <Cpu className={color} size={size} />;
-      case 'BarChart3': return <BarChart3 className={color} size={size} />;
-      case 'Globe': return <Globe className={color} size={size} />;
+      case 'LayoutTemplate': return <LayoutTemplate className={color} size={size} />;
+      case 'BrainCircuit': return <BrainCircuit className={color} size={size} />;
       case 'Zap': return <Zap className={color} size={size} />;
+      case 'LineChart': return <LineChart className={color} size={size} />;
       default: return <Orbit className={color} size={size} />;
     }
   };
 
   const t = {
-    heroTag: lang === 'en' ? "Qatar's Premier Strategic AI Agency" : "وكالة أنسوري للأنظمة - الرائدة في قطر",
-    heroTitle: lang === 'en' ? "The Future of Growth Is Autonomous." : "مستقبل النمو أصبح ذاتي التشغيل.",
-    heroSpan: lang === 'en' ? "Growth" : "النمو",
+    heroTag: lang === 'en' ? "Stop Leaking Leads. Start Scaling." : "توقف عن فقدان العملاء. ابدأ بالتوسع.",
+    heroTitle: lang === 'en' ? "The Autonomous Lead Engine." : "محرك العملاء المحتملين الذاتي.",
+    heroSpan: lang === 'en' ? "Autonomous" : "الذاتي",
     heroDesc: lang === 'en' 
-      ? "Ansury Systems empowers Qatari enterprises with predictive engines that convert at 4x the industry average." 
-      : "أنسوري للأنظمة تمكن الشركات القطرية بمحركات تنبؤية تحقق تحويلات تزيد بـ 4 أضعاف عن متوسط الصناعة.",
-    ctaStart: lang === 'en' ? "Start Your Evolution" : "ابدأ رحلة التطور",
-    ctaShowreel: lang === 'en' ? "View Showreel" : "مشاهدة العرض",
-    dominance: lang === 'en' ? "Market Dominance." : "الهيمنة على السوق.",
+      ? "Ansury Systems builds landing pages + AI automations that capture, qualify, and follow up with your customers—automatically." 
+      : "أنسوري للأنظمة تبني صفحات هبوط + أتمتة ذكاء اصطناعي تجذب وتؤهل وتتابع عملائك - تلقائياً.",
+    ctaStart: lang === 'en' ? "Build Your Engine" : "ابنِ محركك الخاص",
+    ctaShowreel: lang === 'en' ? "How It Works" : "كيف يعمل النظام",
+    dominance: lang === 'en' ? "End-to-End Automation." : "أتمتة شاملة من البداية للنهاية.",
     dominanceDesc: lang === 'en' 
-      ? "Explore our specialized AI modules engineered for the unique dynamics of the Qatari economy." 
-      : "اكتشف وحدات الذكاء الاصطناعي المتخصصة لدينا والمصممة خصيصاً للديناميكيات الفريدة للاقتصاد القطري.",
-    activeModule: lang === 'en' ? "Strategic Engine Active" : "المحرك الاستراتيجي نشط",
-    roiLabel: lang === 'en' ? "Projected ROI Impact" : "تأثير العائد المتوقع",
-    techStack: lang === 'en' ? "Neural Tech Stack" : "مجموعة التقنيات العصبية",
-    featuresLabel: lang === 'en' ? "Strategic Features" : "الميزات الاستراتيجية",
-    initStrategy: lang === 'en' ? "Initialize Strategy Session" : "بدء جلسة الاستراتيجية",
-    winsTitle: lang === 'en' ? "Proven Wins." : "نجاحات مثبتة.",
-    winsDesc: lang === 'en' ? "Real results for real businesses in the heart of Qatar." : "نتائج حقيقية لأعمال حقيقية في قلب قطر.",
-    seeFullPortfolio: lang === 'en' ? "See the Full Portfolio" : "عرض جميع الأعمال",
-    contactTitle: lang === 'en' ? "Let's Build the Next." : "لنقم ببناء المستقبل.",
-    contactDesc: lang === 'en' ? "Whether you're a startup or an established enterprise in Qatar, our AI solutions are built to scale with you." : "سواء كنت شركة ناشئة أو مؤسسة راسخة في قطر، فإن حلول الذكاء الاصطناعي لدينا مبنية لتتوسع معك.",
+      ? "We don't just build websites. We build autonomous marketing ecosystems designed for the unique dynamics of Doha." 
+      : "نحن لا نبني مجرد مواقع إلكترونية. نحن نبني أنظمة تسويق ذاتية مصممة للديناميكيات الفريدة للدوحة.",
+    activeModule: lang === 'en' ? "Conversion Protocol Active" : "بروتوكول التحويل نشط",
+    roiLabel: lang === 'en' ? "Projected Efficiency Impact" : "تأثير الكفاءة المتوقع",
+    techStack: lang === 'en' ? "Automation Stack" : "مجموعة تقنيات الأتمتة",
+    featuresLabel: lang === 'en' ? "Strategic Capabilities" : "القدرات الاستراتيجية",
+    initStrategy: lang === 'en' ? "Blueprint Your Funnel" : "خطط لمسار تحويلك",
+    winsTitle: lang === 'en' ? "Proven Funnels." : "أقماع مبيعات مثبتة.",
+    winsDesc: lang === 'en' ? "See how we've turned static businesses into 24/7 lead machines across Qatar." : "تعرف على كيفية تحويلنا للأعمال الثابتة إلى آلات لجذب العملاء تعمل 24/7 في جميع أنحاء قطر.",
+    seeFullPortfolio: lang === 'en' ? "View Success Stories" : "مشاهدة قصص النجاح",
+    contactTitle: lang === 'en' ? "Ready to Automate?" : "جاهز للأتمتة؟",
+    contactDesc: lang === 'en' ? "Let's turn your marketing into a high-performance system that qualifies leads while you sleep." : "لنحول تسويقك إلى نظام عالي الأداء يؤهل العملاء أثناء نومك.",
     emailUs: lang === 'en' ? "Email Us" : "راسلنا",
-    callUs: lang === 'en' ? "Call Our Doha Office" : "اتصل بمكتبنا في الدوحة",
-    hq: lang === 'en' ? "HQ Location" : "المقر الرئيسي",
+    callUs: lang === 'en' ? "Direct Command" : "الاتصال المباشر",
+    hq: lang === 'en' ? "Base of Operations" : "قاعدة العمليات",
     hqAddr: lang === 'en' ? "Level 24, Tornado Tower, West Bay, Doha, Qatar" : "الطابق 24، برج تورنيدو، الخليج الغربي، الدوحة، قطر",
-    formTitle: lang === 'en' ? "Secure Your Free Strategy Session" : "احجز جلستك الاستراتيجية المجانية",
+    formTitle: lang === 'en' ? "Claim Your Automation Blueprint" : "احصل على مخطط أتمتة خاص بك",
     fullName: lang === 'en' ? "Full Name" : "الاسم الكامل",
     company: lang === 'en' ? "Company Name" : "اسم الشركة",
     email: lang === 'en' ? "Business Email" : "البريد الإلكتروني للعمل",
-    budget: lang === 'en' ? "Budget Range (QAR)" : "نطاق الميزانية (ريال قطري)",
-    msg: lang === 'en' ? "Project Description" : "وصف المشروع",
-    send: lang === 'en' ? "Send Transmission" : "إرسال البيانات",
-    successMsg: lang === 'en' ? "Transmission Received" : "تم استلام البيانات",
-    successDesc: lang === 'en' ? "Our senior strategists are reviewing your data. Expected response time: 2.4 hours." : "كبار الخبراء لدينا يراجعون بياناتك. وقت الرد المتوقع: 2.4 ساعة.",
-    flagship: lang === 'en' ? "Flagship Exhibits." : "المشاريع الرائدة.",
-    flagshipDesc: lang === 'en' ? "High-impact transformations fueled by autonomous intelligence." : "تحولات عالية التأثير مدعومة بالذكاء الذاتي.",
-    caseNo: lang === 'en' ? "Flagship Case No." : "الحالة الرائدة رقم",
-    readBreakdown: lang === 'en' ? "Read Breakdown" : "قراءة التفاصيل",
+    budget: lang === 'en' ? "Target Monthly Lead Volume" : "حجم العملاء الشهري المستهدف",
+    msg: lang === 'en' ? "Current Lead Process" : "عملية العملاء الحالية",
+    send: lang === 'en' ? "Initiate Transmission" : "بدء الإرسال",
+    successMsg: lang === 'en' ? "Protocol Initialized" : "تم تهيئة البروتوكول",
+    successDesc: lang === 'en' ? "An automation specialist will review your data. Expected link established: < 4 hours." : "سيقوم أخصائي أتمتة بمراجعة بياناتك. الربط المتوقع: أقل من 4 ساعات.",
+    flagship: lang === 'en' ? "Automation Exhibits." : "معرض الأتمتة.",
+    flagshipDesc: lang === 'en' ? "Real results. Real ROI. No manual follow-ups." : "نتائج حقيقية. عائد حقيقي. لا متابعات يدوية.",
+    caseNo: lang === 'en' ? "System Exhibit" : "نموذج النظام",
+    readBreakdown: lang === 'en' ? "See the Blueprint" : "مشاهدة المخطط",
   };
 
   const renderHome = () => (
@@ -147,13 +146,13 @@ const App: React.FC = () => {
           
           <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tight">
             {lang === 'en' ? (
-              <>The Future of <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Growth</span> Is <span className="italic font-light">Autonomous.</span></>
+              <>The <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 italic">Autonomous</span> Lead Engine.</>
             ) : (
               <>{t.heroTitle}</>
             )}
           </h1>
           
-          <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+          <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
             {t.heroDesc}
           </p>
 
@@ -256,7 +255,7 @@ const App: React.FC = () => {
                             <div className={`absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-64 p-5 glass rounded-2xl border-cyan-500/40 shadow-[0_10px_30px_rgba(0,0,0,0.5),0_0_15px_rgba(34,211,238,0.2)] z-[60] animate-in fade-in slide-in-from-bottom-2 duration-300 pointer-events-none`}>
                               <div className="flex items-center space-x-2 rtl:space-x-reverse mb-2">
                                 <Info size={14} className="text-cyan-400" />
-                                <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400">{lang === 'en' ? 'Insight' : 'بصيرة'}</span>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400">{lang === 'en' ? 'Protocol' : 'بروتوكول'}</span>
                               </div>
                               <p className="text-xs text-slate-200 leading-relaxed font-medium">
                                 {f.explanation}
@@ -466,14 +465,14 @@ const App: React.FC = () => {
                 </div>
               </div>
               <p className="text-slate-500 max-w-sm mb-8 leading-relaxed">
-                {lang === 'en' ? 'Leading the digital transformation of the Middle East through high-performance autonomous intelligence.' : 'قيادة التحول الرقمي في الشرق الأوسط من خلال الذكاء الذاتي عالي الأداء.'}
+                {lang === 'en' ? 'Scaling Qatari businesses with autonomous landing pages and lead qualification engines.' : 'توسيع نطاق الأعمال القطرية من خلال صفحات هبوط ذاتية ومحركات تأهيل العملاء.'}
               </p>
             </div>
             <div>
               <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Command</h4>
               <ul className="space-y-4 text-slate-400 text-sm">
                 <li onClick={() => setCurrentPage('home')} className="hover:text-cyan-400 cursor-pointer transition-colors">Home</li>
-                <li onClick={() => setCurrentPage('portfolio')} className="hover:text-cyan-400 cursor-pointer transition-colors">Portfolio</li>
+                <li onClick={() => setCurrentPage('portfolio')} className="hover:text-cyan-400 cursor-pointer transition-colors">Success Stories</li>
                 <li onClick={() => setCurrentPage('contact')} className="hover:text-cyan-400 cursor-pointer transition-colors">Contact</li>
               </ul>
             </div>
