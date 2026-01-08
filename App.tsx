@@ -17,7 +17,10 @@ import {
   LayoutTemplate,
   BrainCircuit,
   Zap,
-  LineChart
+  LineChart,
+  Linkedin,
+  Twitter,
+  MessageCircle
 } from 'lucide-react';
 import Navbar from './components/Navbar';
 import StrategyGenerator from './components/StrategyGenerator';
@@ -130,6 +133,7 @@ const App: React.FC = () => {
     flagshipDesc: lang === 'en' ? "Real results. Real ROI. No manual follow-ups." : "نتائج حقيقية. عائد حقيقي. لا متابعات يدوية.",
     caseNo: lang === 'en' ? "System Exhibit" : "نموذج النظام",
     readBreakdown: lang === 'en' ? "See the Blueprint" : "مشاهدة المخطط",
+    whatsappLabel: lang === 'en' ? "Chat with an Expert" : "تحدث مع خبير"
   };
 
   const renderHome = () => (
@@ -386,11 +390,11 @@ const App: React.FC = () => {
             <div className="space-y-8">
               <div className="flex items-start">
                 <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Mail className="text-cyan-400" /></div>
-                <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">{t.emailUs}</h3><p className="text-xl font-bold">hello@ansury.systems</p></div>
+                <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">{t.emailUs}</h3><p className="text-xl font-bold">hello@ansurysystem.online</p></div>
               </div>
               <div className="flex items-start">
                 <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Phone className="text-cyan-400" /></div>
-                <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">{t.callUs}</h3><p className="text-xl font-bold">+974 4400 0000</p></div>
+                <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">{t.callUs}</h3><p className="text-xl font-bold">+974 51182644</p></div>
               </div>
               <div className="flex items-start">
                 <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><MapPin className="text-cyan-400" /></div>
@@ -452,7 +456,24 @@ const App: React.FC = () => {
     <div className={`min-h-screen ${lang === 'ar' ? 'font-arabic' : ''}`}>
       <Navbar currentPage={currentPage} setPage={setCurrentPage} lang={lang} toggleLang={toggleLang} />
       <main>{renderContent()}</main>
+      
+      {/* WhatsApp Floating Button */}
+      <a 
+        href={`https://wa.me/97451182644?text=${encodeURIComponent(lang === 'en' ? 'Hello Ansury Systems, I would like to learn more about your autonomous lead engines.' : 'مرحباً أنسوري للأنظمة، أود معرفة المزيد عن محركات توليد العملاء التلقائية لديك.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-8 left-8 z-[100] group flex items-center"
+      >
+        <div className="mr-3 rtl:mr-0 rtl:ml-3 px-4 py-2 bg-slate-900/80 backdrop-blur-md border border-white/10 text-white text-xs font-bold rounded-full opacity-0 group-hover:opacity-100 transition-all transform translate-x-4 group-hover:translate-x-0">
+          {t.whatsappLabel}
+        </div>
+        <div className="w-16 h-16 rounded-full bg-[#25D366] shadow-[0_0_25px_rgba(37,211,102,0.4)] flex items-center justify-center text-white transition-all transform hover:scale-110 active:scale-95">
+          <MessageCircle size={28} fill="currentColor" />
+        </div>
+      </a>
+
       <Chatbot onHandover={() => { setCurrentPage('contact'); setTimeout(() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' }), 100); }} />
+      
       <footer className="py-20 border-t border-white/5 bg-slate-950">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20 text-left rtl:text-right">
@@ -467,6 +488,14 @@ const App: React.FC = () => {
               <p className="text-slate-500 max-w-sm mb-8 leading-relaxed">
                 {lang === 'en' ? 'Scaling Qatari businesses with autonomous landing pages and lead qualification engines.' : 'توسيع نطاق الأعمال القطرية من خلال صفحات هبوط ذاتية ومحركات تأهيل العملاء.'}
               </p>
+              <div className="flex space-x-4 rtl:space-x-reverse">
+                <a href="https://linkedin.com/company/ansury-systems" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-900 rounded-xl text-slate-500 hover:text-cyan-400 border border-white/5 transition-all">
+                  <Linkedin size={20} />
+                </a>
+                <a href="https://twitter.com/ansurysystems" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-900 rounded-xl text-slate-500 hover:text-cyan-400 border border-white/5 transition-all">
+                  <Twitter size={20} />
+                </a>
+              </div>
             </div>
             <div>
               <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Command</h4>
@@ -475,6 +504,11 @@ const App: React.FC = () => {
                 <li onClick={() => setCurrentPage('portfolio')} className="hover:text-cyan-400 cursor-pointer transition-colors">Success Stories</li>
                 <li onClick={() => setCurrentPage('contact')} className="hover:text-cyan-400 cursor-pointer transition-colors">Contact</li>
               </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Direct Link</h4>
+              <p className="text-slate-400 text-sm mb-2">+974 51182644</p>
+              <p className="text-slate-400 text-sm">hello@ansurysystem.online</p>
             </div>
           </div>
           <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-slate-600 font-bold uppercase tracking-widest">
