@@ -1,16 +1,9 @@
 name = "ansury-systems"
 compatibility_date = "2024-01-15"
 
-# 🔴 IMPORTANT:
-# This tells Cloudflare Pages "this wrangler.toml is legit"
+# This tells Pages the output folder
 pages_build_output_dir = "dist"
 
-[build]
-command = "npm run build"
-cwd = "."
-
-[vars]
-VITE_API_URL = "/api"
-
 [env.production.vars]
-GEMINI_API_KEY = "set-this-in-dashboard"
+VITE_API_URL = "/api"
+GEMINI_API_KEY = "set-in-dashboard"
