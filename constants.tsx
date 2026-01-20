@@ -1,42 +1,42 @@
 
 import React from 'react';
-import { Layout, BrainCircuit, MessageSquareQuote, RefreshCcw, LayoutTemplate, Bot, Zap, LineChart } from 'lucide-react';
+import { LayoutTemplate, BrainCircuit, Zap, LineChart } from 'lucide-react';
 import { Service, CaseStudy } from './types';
 
 export const SERVICES: Service[] = [
   {
     id: 'conversion-pages',
-    title: { en: 'Conversion Architecture', ar: 'هندسة التحويل' },
+    title: { en: 'Stop Scroll & Turn Visitors into Clients', ar: 'توقف عن التمرير وحول الزوار إلى عملاء' },
     description: { 
-      en: 'Elite landing pages engineered for the Qatari market, optimized for lightning-fast speeds and maximum lead capture.', 
-      ar: 'صفحات هبوط نخبوية مصممة للسوق القطري، محسنة لسرعات فائقة وأقصى قدر من جذب العملاء.' 
+      en: 'Most websites lose 95% of traffic. Our landing pages are high-status conversion architecture designed to capture attention and trigger immediate action.', 
+      ar: 'معظم المواقع تخسر 95% من الزوار. صفحات الهبوط لدينا هي بنية تحتية مصممة لجذب الانتباه وإثارة اتخاذ إجراء فوري.' 
     },
     icon: 'LayoutTemplate'
   },
   {
     id: 'ai-qualification',
-    title: { en: 'Autonomous Qualification', ar: 'التأهيل الذاتي' },
+    title: { en: 'Screen Leads Automatically 24/7', ar: 'فحص العملاء تلقائيًا 24/7' },
     description: { 
-      en: 'AI-driven screening that filters out looky-loos and identifies high-intent buyers before you ever speak to them.', 
-      ar: 'فحص مدعوم بالذكاء الاصطناعي يصفي الفضوليين ويحدد المشترين ذوي النية العالية قبل أن تتحدث إليهم.' 
+      en: 'Stop wasting time on people who can\'t afford you. Our AI screens leads for budget and intent, so you only talk to high-value opportunities.', 
+      ar: 'توقف عن إضاعة الوقت مع أشخاص لا يستطيعون تحمل تكلفتك. يقوم ذكاؤنا الاصطناعي بفحص العملاء للميزانية والنية.' 
     },
     icon: 'BrainCircuit'
   },
   {
     id: 'follow-up-engine',
-    title: { en: '24/7 Follow-up Protocol', ar: 'بروتوكول المتابعة 24/7' },
+    title: { en: 'Close Deals While They Are Hot', ar: 'أغلق الصفقات وهي لا تزال ساخنة' },
     description: { 
-      en: 'Never lose a lead to silence. Our bots follow up via WhatsApp, SMS, and Email within seconds of contact.', 
-      ar: 'لا تفقد عميلاً بسبب الصمت أبداً. تقوم بوتاتنا بالمتابعة عبر واتساب ورسائل SMS والبريد الإلكتروني في غضون ثوانٍ.' 
+      en: 'Leads cool down in minutes. We install infrastructure that responds in < 60 seconds with personalized WhatsApp and Email follow-ups.', 
+      ar: 'العملاء يبردون في دقائق. نحن نثبت بنية تحتية تستجيب في أقل من 60 ثانية بمتابعات مخصصة عبر واتساب والبريد الإلكتروني.' 
     },
     icon: 'Zap'
   },
   {
     id: 'growth-sync',
-    title: { en: 'Growth Synchronization', ar: 'مزامنة النمو' },
+    title: { en: 'See Exactly Where Revenue Comes From', ar: 'اعرف بالضبط من أين تأتي الإيرادات' },
     description: { 
-      en: 'Seamless CRM integration that maps every automated touchpoint to your bottom line revenue.', 
-      ar: 'تكامل CRM سلس يربط كل نقطة اتصال مؤتمتة بصافي إيراداتك.' 
+      en: 'No more guessing. We sync your automated funnel to real-time ROI dashboards so you know exactly which Riyal produced which lead.', 
+      ar: 'لا مزيد من التخمين. نحن نربط قمعك المؤتمت بلوحات تحكم عائد الاستثمار في الوقت الفعلي.' 
     },
     icon: 'LineChart'
   }
@@ -44,66 +44,66 @@ export const SERVICES: Service[] = [
 
 export const SERVICE_DETAILS = {
   'conversion-pages': {
-    tools: ['Next.js', 'Vercel Edge', 'A/B Testing'],
+    tools: ['High-Performance Edge', 'Khaleeji UX', 'A/B Testing'],
     roi: { en: 'Average 3.5x increase in conversion rate.', ar: 'متوسط زيادة 3.5 ضعف في معدل التحويل.' },
     features: {
       en: [
-        { name: 'Khaleeji-First Design', explanation: 'Visual layouts and typography specifically tested for Arabic reading patterns and luxury Qatari tastes.' },
-        { name: 'Edge Performance', explanation: 'Sub-second load times across Doha to prevent drop-offs on mobile 5G networks.' },
-        { name: 'Conversion-First Copy', explanation: 'Psychology-backed headlines designed to turn local traffic into immediate action.' }
+        { name: 'Zero Traffic Leakage', explanation: 'Prevent potential clients from leaving your site due to technical friction or slow loading.' },
+        { name: 'Luxury Qatari UX', explanation: 'Design patterns tested for high-net-worth expectations in the Doha market.' },
+        { name: 'Conversion Copywriting', explanation: 'Every word is written to move users from "just looking" to "need this now".' }
       ],
       ar: [
-        { name: 'تصميم خليجي أولاً', explanation: 'تخطيطات مرئية وطباعة تم اختبارها خصيصاً لأنماط القراءة العربية والأذواق القطرية الفاخرة.' },
-        { name: 'أداء الحافة (Edge)', explanation: 'مرات تحميل أقل من ثانية في جميع أنحاء الدوحة لمنع التسرب على شبكات الجوال 5G.' },
-        { name: 'نصوص تحويلية', explanation: 'عناوين مدعومة بعلم النفس مصممة لتحويل الزيارات المحلية إلى إجراءات فورية.' }
+        { name: 'صفر تسرب للزيارات', explanation: 'منع العملاء المحتملين من مغادرة موقعك بسبب الاحتكاك التقني أو التحميل البطيء.' },
+        { name: 'تجربة مستخدم قطرية فاخرة', explanation: 'أنماط تصميم تم اختبارها لتوقعات ذوي الثروات العالية في سوق الدوحة.' },
+        { name: 'نصوص تحويلية', explanation: 'كل كلمة مكتوبة لتحويل المستخدمين من "مجرد تصفح" إلى "أحتاج هذا الآن".' }
       ]
     }
   },
   'ai-qualification': {
-    tools: ['GPT-4o', 'Condition Logic', 'NLP Dialects'],
+    tools: ['Advanced NLP', 'Intent Analysis', 'Condition Logic'],
     roi: { en: 'Save 20+ hours of sales team time per week.', ar: 'توفير أكثر من 20 ساعة من وقت فريق المبيعات أسبوعياً.' },
     features: {
       en: [
-        { name: 'Intent Scoring', explanation: 'AI agents that ask strategic questions to determine budget, timeline, and urgency automatically.' },
-        { name: 'Multi-Channel Capture', explanation: 'Uniform qualification logic across your website, Instagram DMs, and WhatsApp.' },
-        { name: 'Instant CRM Entry', explanation: 'Qualified leads are automatically pushed to your sales team with a full summary of their needs.' }
+        { name: 'Budget Verification', explanation: 'The AI determines budget before you ever waste a meeting with a low-intent prospect.' },
+        { name: '24/7 Screening', explanation: 'Qualify leads at 3 AM while your competitors are asleep.' },
+        { name: 'Intent Scoring', explanation: 'Rank leads based on how ready they are to buy right now.' }
       ],
       ar: [
-        { name: 'سجل النية', explanation: 'وكلاء ذكاء اصطناعي يطرحون أسئلة استراتيجية لتحديد الميزانية والجدول الزمني ومدى الإلحاح آلياً.' },
-        { name: 'جذب متعدد القنوات', explanation: 'منطق تأهيل موحد عبر موقعك الإلكتروني ورسائل إنستغرام وواتساب.' },
-        { name: 'إدخال CRM فوري', explanation: 'يتم دفع العملاء المؤهلين تلقائياً إلى فريق المبيعات مع ملخص كامل لاحتياجاتهم.' }
+        { name: 'التحقق من الميزانية', explanation: 'يحدد الذكاء الاصطناعي الميزانية قبل أن تضيع وقتك في أي اجتماع مع عميل غير جاد.' },
+        { name: 'فحص 24/7', explanation: 'تأهيل العملاء في الساعة 3 صباحاً بينما ينام منافسوك.' },
+        { name: 'تسجيل النية', explanation: 'تصنيف العملاء بناءً على مدى استعدادهم للشراء الآن.' }
       ]
     }
   },
   'follow-up-engine': {
-    tools: ['Ansury Automate', 'WhatsApp API', 'SMTP Relay'],
+    tools: ['Ansury Automate', 'WhatsApp API', 'Direct Calendar Sync'],
     roi: { en: '90% reduction in lead response time.', ar: 'انخفاض بنسبة 90% في وقت الاستجابة للعملاء.' },
     features: {
       en: [
-        { name: 'Rapid-Fire Response', explanation: 'The "5-minute rule" automated. Reach leads while they are still on your site.' },
-        { name: 'Drip Nurture Logic', explanation: 'Multi-day follow-up sequences that handle objections and share case studies autonomously.' },
-        { name: 'Meeting Scheduler', explanation: 'Integrated booking systems that let qualified leads choose a time on your calendar instantly.' }
+        { name: '60s Response Time', explanation: 'Leads are 100x more likely to convert if contacted within 5 minutes.' },
+        { name: 'Objection Handling', explanation: 'Nurture sequences that address common doubts before they reach your staff.' },
+        { name: 'Auto-Booking', explanation: 'Qualified prospects can book directly into your team\'s calendar.' }
       ],
       ar: [
-        { name: 'استجابة سريعة جداً', explanation: 'أتمتة "قاعدة الـ 5 دقائق". تواصل مع العملاء بينما لا يزالون في موقعك.' },
-        { name: 'منطق رعاية التقطير', explanation: 'سلاسل متابعة متعددة الأيام تتعامل مع الاعتراضات وتشارك دراسات الحالة ذاتياً.' },
-        { name: 'مجدول المواعيد', explanation: 'أنظمة حجز متكاملة تتيح للعملاء المؤهلين اختيار وقت في تقويمك فوراً.' }
+        { name: 'استجابة في 60 ثانية', explanation: 'فرصة تحويل العملاء تزيد 100 مرة إذا تم الاتصال بهم في غضون 5 دقائق.' },
+        { name: 'معالجة الاعتراضات', explanation: 'سلاسل رعاية تعالج الشكوك الشائعة قبل وصولهم إلى موظفيك.' },
+        { name: 'حجز تلقائي', explanation: 'يمكن للعملاء المؤهلين الحجز مباشرة في تقويم فريقك.' }
       ]
     }
   },
   'growth-sync': {
-    tools: ['Looker Studio', 'Zapier', 'Custom Webhooks'],
+    tools: ['Revenue Dashboards', 'Profit Tracking', 'Real-time Alerts'],
     roi: { en: '100% visibility on marketing spend.', ar: 'رؤية بنسبة 100% على الإنفاق التسويقي.' },
     features: {
       en: [
-        { name: 'Live Command Center', explanation: 'Real-time dashboard showing exactly how many leads are in each stage of your automated funnel.' },
-        { name: 'Attribution Mapping', explanation: 'Know exactly which ad or campaign generated the highest value qualified leads.' },
-        { name: 'Automated Reporting', explanation: 'Weekly performance digests sent to your inbox—no more manual spreadsheets.' }
+        { name: 'ROI Clarity', explanation: 'Know your exact cost-per-qualified-lead, not just cost-per-click.' },
+        { name: 'Scaling Blueprints', explanation: 'See exactly where to invest more to maximize your profit.' },
+        { name: 'Zero Spreadsheets', explanation: 'Eliminate manual reporting. Get real-time updates pushed to your phone.' }
       ],
       ar: [
-        { name: 'مركز القيادة المباشر', explanation: 'لوحة تحكم في الوقت الفعلي توضح بالضبط عدد العملاء في كل مرحلة من مراحل قمعك المؤتمت.' },
-        { name: 'خرائط الإسناد', explanation: 'اعرف بالضبط أي إعلان أو حملة ولدت أعلى قيمة من العملاء المؤهلين.' },
-        { name: 'تقارير مؤتمتة', explanation: 'ملخصات أداء أسبوعية تُرسل إلى بريدك الوارد - لا مزيد من جداول البيانات اليدوية.' }
+        { name: 'وضوح عائد الاستثمار', explanation: 'اعرف بالضبط تكلفة العميل المؤهل الواحد، وليس فقط تكلفة النقرة.' },
+        { name: 'مخططات التوسع', explanation: 'اعرف بالضبط أين تستثمر أكثر لزيادة أرباحك.' },
+        { name: 'صفر جداول بيانات', explanation: 'تخلص من التقارير اليدوية. احصل على تحديثات في الوقت الفعلي على هاتفك.' }
       ]
     }
   }
@@ -112,34 +112,34 @@ export const SERVICE_DETAILS = {
 export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'lusail-apartments',
-    client: 'Lusail Prime Reality',
-    title: { en: 'Converting Passive Browsers into Qualified Investors', ar: 'تحويل المتصفحين السلبيين إلى مستثمرين مؤهلين' },
-    category: { en: 'Real Estate / Funnel Automation', ar: 'عقارات / أتمتة الأقماع' },
+    client: 'Lusail Prime Realty',
+    title: { en: 'Replaced 3 Sales Roles with 1 AI Engine', ar: 'استبدال 3 وظائف مبيعات بمحرك ذكاء اصطناعي واحد' },
+    category: { en: 'Real Estate Growth', ar: 'نمو العقارات' },
     description: { 
-      en: 'We replaced their static website with a high-conversion engine that qualified leads via WhatsApp.', 
-      ar: 'استبدلنا موقعهم الإلكتروني الثابت بمحرك تحويل عالي الأداء يقوم بتأهيل العملاء عبر واتساب.' 
+      en: 'Turned a manual, leaky sales process into an autonomous qualification system that increased deal speed by 300%.', 
+      ar: 'حولنا عملية مبيعات يدوية مليئة بالتسرب إلى نظام تأهيل ذاتي زاد من سرعة إغلاق الصفقات بنسبة 300%.' 
     },
     results: {
-      en: ['400% ROI on ad spend', '85% Automatic qualification', '2min Lead response time'],
-      ar: ['400% عائد على الإنفاق الإعلاني', '85% تأهيل تلقائي', 'دقيقتان وقت الاستجابة للعملاء']
+      en: ['4x ROI on ad spend', '85% Automatic qualification', '100% Leads contacted < 60s'],
+      ar: ['4 أضعاف عائد الإنفاق الإعلاني', '85% تأهيل تلقائي', '100% تواصل في أقل من 60 ثانية']
     },
     image: 'https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1200',
-    tags: ['Landing Page', 'AI Qualify', 'Real Estate']
+    tags: ['Real Estate', 'AI Infrastructure']
   },
   {
     id: 'doha-dentistry',
     client: 'Pearl Dental Clinic',
-    title: { en: 'Automating the Patient Booking Loop', ar: 'أتمتة حلقة حجز المرضى' },
-    category: { en: 'Medical / Lead Automation', ar: 'طبي / أتمتة العملاء' },
+    title: { en: '120 High-Value Patient Bookings in 30 Days', ar: '120 حجز مريض عالي القيمة في 30 يوماً' },
+    category: { en: 'Healthcare Scaling', ar: 'توسع الرعاية الصحية' },
     description: { 
-      en: 'A 24/7 AI receptionist that qualifies insurance and books appointments instantly.', 
-      ar: 'موظف استقبال ذكاء اصطناعي يعمل 24/7 يتحقق من التأمين ويحجز المواعيد فوراً.' 
+      en: 'Installed AI infrastructure that qualifies insurance and books appointments instantly, removing admin bottlenecks.', 
+      ar: 'ثبتنا بنية تحتية للذكاء الاصطناعي تتحقق من التأمين وتحجز المواعيد فوراً، مما أزال عوائق الإدارة.' 
     },
     results: {
-      en: ['120 New bookings/mo', 'Zero missed inquiries', '60% Admin time saved'],
-      ar: ['120 حجزاً جديداً شهرياً', 'صفر استفسارات مفقودة', '60% توفير في الوقت الإداري']
+      en: ['120 New bookings/mo', 'Zero leakage on inquiries', '60% Admin overhead reduction'],
+      ar: ['120 حجزاً جديداً شهرياً', 'صفر تسرب في الاستفسارات', '60% تقليل التكاليف الإدارية']
     },
     image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1200',
-    tags: ['Healthcare', 'Appointment AI', 'Automation']
+    tags: ['Medical', 'Auto-Booking']
   }
 ];

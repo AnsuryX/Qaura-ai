@@ -45,13 +45,13 @@ const StrategyGenerator: React.FC = () => {
           </div>
 
           <div className="mb-10 text-center">
-            <h2 className="text-3xl md:text-4xl font-black mb-4">Generate Your <span className="text-cyan-400">Automation Blueprint</span></h2>
-            <p className="text-slate-400 max-w-lg mx-auto">See how an autonomous funnel would look for your business. No manual follow-ups, just qualified results.</p>
+            <h2 className="text-3xl md:text-4xl font-black mb-4">Get Your <span className="text-cyan-400">Custom Growth Blueprint</span></h2>
+            <p className="text-slate-400 max-w-lg mx-auto">See how an automated infrastructure can qualify your leads and book meetings while you focus on closing deals.</p>
           </div>
 
           <form onSubmit={handleGenerate} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Your Sector</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Industry / Sector</label>
               <input 
                 required
                 type="text" 
@@ -62,21 +62,21 @@ const StrategyGenerator: React.FC = () => {
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Current Lead Source</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Your Main Lead Source</label>
               <input 
                 required
                 type="text" 
-                placeholder="e.g. Instagram, Word of Mouth, SEO"
+                placeholder="e.g. Instagram Ads, SEO, Referrals"
                 className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 transition-colors text-white"
                 value={audience}
                 onChange={(e) => setAudience(e.target.value)}
               />
             </div>
             <div className="md:col-span-2 space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Main Conversion Goal</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-500">What is your #1 goal this month?</label>
               <textarea 
                 required
-                placeholder="What action do you want them to take? (e.g. Book a viewing, Schedule a consultation)"
+                placeholder="e.g. Get 50 qualified property viewings / Double our consultation bookings"
                 className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 transition-colors text-white min-h-[100px]"
                 value={goals}
                 onChange={(e) => setGoals(e.target.value)}
@@ -87,7 +87,7 @@ const StrategyGenerator: React.FC = () => {
                 disabled={loading}
                 className="w-full py-4 bg-cyan-500 text-slate-900 font-black rounded-xl flex items-center justify-center space-x-2 hover:bg-cyan-400 transition-all disabled:opacity-50 shadow-[0_0_20px_rgba(34,211,238,0.2)]"
               >
-                {loading ? <Loader2 className="animate-spin" /> : <><Sparkles size={18} /> <span>Initialize Blueprint Generation</span></>}
+                {loading ? <Loader2 className="animate-spin" /> : <><Sparkles size={18} /> <span>Show Me My AI Blueprint</span></>}
               </button>
             </div>
           </form>
@@ -95,7 +95,7 @@ const StrategyGenerator: React.FC = () => {
           {result && (
             <div className="mt-8 p-6 bg-slate-900/80 rounded-2xl border border-cyan-500/30 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <h3 className="text-xl font-bold mb-4 text-cyan-400 flex items-center gap-2">
-                <Workflow size={20} /> Your Autonomous Funnel Blueprint
+                <Workflow size={20} /> Your Personalized Growth Strategy
               </h3>
               <div className="prose prose-invert prose-cyan max-w-none text-slate-300 leading-relaxed whitespace-pre-wrap text-sm md:text-base italic">
                 {result}
@@ -105,7 +105,7 @@ const StrategyGenerator: React.FC = () => {
                   onClick={() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' })}
                   className="px-8 py-3 bg-white text-slate-900 font-bold rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105"
                 >
-                  Apply This Blueprint
+                  Apply This Strategy to My Business
                 </button>
               </div>
             </div>

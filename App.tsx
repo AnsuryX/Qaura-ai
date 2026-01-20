@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { 
-  ChevronRight, 
   ArrowRight, 
   Play, 
   CheckCircle2,
@@ -10,17 +9,22 @@ import {
   Phone,
   ArrowUpRight,
   ChevronLeft,
+  ChevronRight,
   Sparkles,
   Loader2,
   Orbit,
   Info,
+  Linkedin,
+  Twitter,
+  MessageCircle,
+  Users,
+  ShieldCheck,
+  TrendingUp,
+  Clock,
   LayoutTemplate,
   BrainCircuit,
   Zap,
-  LineChart,
-  Linkedin,
-  Twitter,
-  MessageCircle
+  LineChart
 } from 'lucide-react';
 import Navbar from './components/Navbar';
 import StrategyGenerator from './components/StrategyGenerator';
@@ -94,53 +98,40 @@ const App: React.FC = () => {
   };
 
   const t = {
-    heroTag: lang === 'en' ? "Stop Leaking Leads. Start Scaling." : "توقف عن فقدان العملاء. ابدأ بالتوسع.",
-    heroTitle: lang === 'en' ? "The Autonomous Lead Engine." : "محرك العملاء المحتملين الذاتي.",
-    heroSpan: lang === 'en' ? "Autonomous" : "الذاتي",
+    heroTag: lang === 'en' ? "Stop Leaking Revenue" : "توقف عن خسارة الإيرادات",
+    heroTitle: lang === 'en' ? "Stop Missing Leads While You Sleep. Convert Them Automatically." : "توقف عن فقدان العملاء أثناء نومك. حولهم تلقائيًا.",
     heroDesc: lang === 'en' 
-      ? "Ansury Systems builds landing pages + AI automations that capture, qualify, and follow up with your customers—automatically." 
-      : "أنسوري للأنظمة تبني صفحات هبوط + أتمتة ذكاء اصطناعي تجذب وتؤهل وتتابع عملائك - تلقائياً.",
-    ctaStart: lang === 'en' ? "Build Your Engine" : "ابنِ محركك الخاص",
-    ctaShowreel: lang === 'en' ? "How It Works" : "كيف يعمل النظام",
-    dominance: lang === 'en' ? "End-to-End Automation." : "أتمتة شاملة من البداية للنهاية.",
-    dominanceDesc: lang === 'en' 
-      ? "We don't just build websites. We build autonomous marketing ecosystems designed for the unique dynamics of Doha." 
-      : "نحن لا نبني مجرد مواقع إلكترونية. نحن نبني أنظمة تسويق ذاتية مصممة للديناميكيات الفريدة للدوحة.",
-    activeModule: lang === 'en' ? "Conversion Protocol Active" : "بروتوكول التحويل نشط",
-    roiLabel: lang === 'en' ? "Projected Efficiency Impact" : "تأثير الكفاءة المتوقع",
-    techStack: lang === 'en' ? "Automation Stack" : "مجموعة تقنيات الأتمتة",
-    featuresLabel: lang === 'en' ? "Strategic Capabilities" : "القدرات الاستراتيجية",
-    initStrategy: lang === 'en' ? "Blueprint Your Funnel" : "خطط لمسار تحويلك",
-    winsTitle: lang === 'en' ? "Proven Funnels." : "أقماع مبيعات مثبتة.",
-    winsDesc: lang === 'en' ? "See how we've turned static businesses into 24/7 lead machines across Qatar." : "تعرف على كيفية تحويلنا للأعمال الثابتة إلى آلات لجذب العملاء تعمل 24/7 في جميع أنحاء قطر.",
-    seeFullPortfolio: lang === 'en' ? "View Success Stories" : "مشاهدة قصص النجاح",
-    contactTitle: lang === 'en' ? "Ready to Automate?" : "جاهز للأتمتة؟",
-    contactDesc: lang === 'en' ? "Let's turn your marketing into a high-performance system that qualifies leads while you sleep." : "لنحول تسويقك إلى نظام عالي الأداء يؤهل العملاء أثناء نومك.",
-    emailUs: lang === 'en' ? "Email Us" : "راسلنا",
-    callUs: lang === 'en' ? "Direct Command" : "الاتصال المباشر",
-    hq: lang === 'en' ? "Base of Operations" : "قاعدة العمليات",
-    hqAddr: lang === 'en' ? "Level 24, Tornado Tower, West Bay, Doha, Qatar" : "الطابق 24، برج تورنيدو، الخليج الغربي، الدوحة، قطر",
-    formTitle: lang === 'en' ? "Claim Your Automation Blueprint" : "احصل على مخطط أتمتة خاص بك",
-    fullName: lang === 'en' ? "Full Name" : "الاسم الكامل",
-    company: lang === 'en' ? "Company Name" : "اسم الشركة",
-    email: lang === 'en' ? "Business Email" : "البريد الإلكتروني للعمل",
-    budget: lang === 'en' ? "Target Monthly Lead Volume" : "حجم العملاء الشهري المستهدف",
-    msg: lang === 'en' ? "Current Lead Process" : "عملية العملاء الحالية",
-    send: lang === 'en' ? "Initiate Transmission" : "بدء الإرسال",
-    successMsg: lang === 'en' ? "Protocol Initialized" : "تم تهيئة البروتوكول",
-    successDesc: lang === 'en' ? "An automation specialist will review your data. Expected link established: < 4 hours." : "سيقوم أخصائي أتمتة بمراجعة بياناتك. الربط المتوقع: أقل من 4 ساعات.",
-    flagship: lang === 'en' ? "Automation Exhibits." : "معرض الأتمتة.",
-    flagshipDesc: lang === 'en' ? "Real results. Real ROI. No manual follow-ups." : "نتائج حقيقية. عائد حقيقي. لا متابعات يدوية.",
-    caseNo: lang === 'en' ? "System Exhibit" : "نموذج النظام",
-    readBreakdown: lang === 'en' ? "See the Blueprint" : "مشاهدة المخطط",
-    whatsappLabel: lang === 'en' ? "Chat with an Expert" : "تحدث مع خبير"
+      ? "Ansury installs AI growth infrastructure that captures, qualifies, and books meetings with your ideal clients 24/7. No extra staff. No manual follow-up." 
+      : "أنسوري تقوم بتثبيت بنية تحتية للنمو تجذب وتؤهل وتحجز المواعيد مع عملائك المثاليين 24/7. بدون موظفين إضافيين. بدون متابعة يدوية.",
+    ctaStart: lang === 'en' ? "Get My AI Growth Blueprint" : "احصل على مخطط نمو الذكاء الاصطناعي الخاص بي",
+    ctaPortfolio: lang === 'en' ? "Show Me How This Pays for Itself" : "أرني كيف يغطي هذا تكلفته بنفسه",
+    
+    infraTitle: lang === 'en' ? "We Don't Sell Tools. We Install Outcomes." : "نحن لا نبيع أدوات. نحن نثبت نتائج.",
+    infraDesc: lang === 'en' ? "Most companies hire people to manage growth. We automate growth so your people can focus on closing deals." : "معظم الشركات توظف أشخاصًا لإدارة النمو. نحن نؤتمت النمو ليتفرغ موظفوك لإبرام الصفقات.",
+    
+    benefitsHeading: lang === 'en' ? "Your Sales Team Talks Only to Paying Opportunities — Never Tire-Kickers." : "فريق مبيعاتك يتحدث فقط مع المشترين الجادين - لا تضيع وقتك مع الفضوليين.",
+    benefitsSub: lang === 'en' ? "Our synchronized Growth Engine replaces fragmented marketing with one high-performance system." : "محرك النمو المتزامن لدينا يستبدل التسويق المجزأ بنظام واحد عالي الأداء.",
+    
+    proofTitle: lang === 'en' ? "Trusted by High-Status Qatari Businesses" : "موثوق من قبل الشركات القطرية المرموقة",
+    
+    caseStudiesTitle: lang === 'en' ? "Proof That Growth Can Be Autonomous." : "دليل على أن النمو يمكن أن يكون ذاتيًا.",
+    caseStudiesDesc: lang === 'en' ? "See how we've turned manual businesses into 24/7 lead machines with zero leakage." : "تعرف على كيفية تحويلنا للأعمال اليدوية إلى آلات لجذب العملاء تعمل 24/7 بدون أي تسرب.",
+
+    contactTitle: lang === 'en' ? "Ready to Install Your Growth Engine?" : "جاهز لتثبيت محرك النمو الخاص بك؟",
+    contactDesc: lang === 'en' ? "Schedule a consultation to see how our infrastructure can buy back 20+ hours of your sales team's week." : "حدد موعدًا لاستشارة لتعرف كيف يمكن لبنيتنا التحتية استعادة أكثر من 20 ساعة من أسبوع فريق مبيعاتك.",
+    
+    formTitle: lang === 'en' ? "Claim Your Custom ROI Blueprint" : "احصل على مخطط عائد الاستثمار المخصص لك",
+    send: lang === 'en' ? "Get My Blueprint Now" : "احصل على مخططي الآن",
+    
+    whatsappLabel: lang === 'en' ? "Speak to a Strategist" : "تحدث إلى استراتيجي"
   };
 
   const renderHome = () => (
     <>
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+      {/* ABOVE THE FOLD HERO */}
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 min-h-[90vh] flex items-center overflow-hidden">
+        <div className="absolute top-0 -left-4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
 
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="inline-flex items-center space-x-2 rtl:space-x-reverse bg-slate-900 border border-slate-700 px-4 py-2 rounded-full mb-8 animate-in fade-in slide-in-from-bottom duration-700">
@@ -148,40 +139,130 @@ const App: React.FC = () => {
             <span className="text-xs font-bold tracking-widest uppercase text-slate-300">{t.heroTag}</span>
           </div>
           
-          <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tight">
-            {lang === 'en' ? (
-              <>The <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 italic">Autonomous</span> Lead Engine.</>
-            ) : (
-              <>{t.heroTitle}</>
-            )}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.05] tracking-tight max-w-6xl mx-auto">
+            {t.heroTitle}
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
             {t.heroDesc}
           </p>
 
-          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 rtl:space-x-reverse animate-in fade-in slide-in-from-bottom duration-1500 delay-500">
+          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 rtl:space-x-reverse">
             <button 
-              onClick={() => setCurrentPage('contact')}
-              className="w-full md:w-auto px-10 py-5 bg-cyan-500 text-slate-900 font-black rounded-full text-lg hover:bg-cyan-400 transition-all shadow-[0_0_30px_rgba(34,211,238,0.4)] flex items-center justify-center"
+              onClick={() => {
+                setCurrentPage('contact');
+                setTimeout(() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' }), 100);
+              }}
+              className="w-full md:w-auto px-10 py-5 bg-cyan-500 text-slate-900 font-black rounded-full text-lg hover:bg-cyan-400 transition-all shadow-[0_0_30px_rgba(34,211,238,0.4)] flex items-center justify-center group"
             >
-              {t.ctaStart} <ArrowRight className={`ml-2 rtl:mr-2 rtl:rotate-180`} />
+              {t.ctaStart} <ArrowRight className={`ml-2 rtl:mr-2 rtl:rotate-180 group-hover:translate-x-1 transition-transform`} />
             </button>
             <button 
               onClick={() => setCurrentPage('portfolio')}
               className="w-full md:w-auto px-10 py-5 glass text-white font-bold rounded-full text-lg flex items-center justify-center hover:bg-white/10 transition-all"
             >
-              <Play className="mr-2 rtl:ml-2 fill-current" size={18} /> {t.ctaShowreel}
+              {t.ctaPortfolio}
             </button>
+          </div>
+          
+          {/* Quick Social Proof Headers */}
+          <div className="mt-20 pt-10 border-t border-white/5 opacity-50 grayscale hover:grayscale-0 transition-all">
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] mb-6 text-slate-500">{t.proofTitle}</p>
+            <div className="flex flex-wrap items-center justify-center gap-12 md:gap-24">
+               <div className="flex items-center space-x-2"><Orbit size={20}/><span className="text-lg font-bold">LUSAIL REALTY</span></div>
+               <div className="flex items-center space-x-2"><Orbit size={20}/><span className="text-lg font-bold">PEARL DENTAL</span></div>
+               <div className="flex items-center space-x-2"><Orbit size={20}/><span className="text-lg font-bold">WEST BAY LEGAL</span></div>
+               <div className="flex items-center space-x-2"><Orbit size={20}/><span className="text-lg font-bold">DOHA HOLDINGS</span></div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-slate-950 relative overflow-hidden">
+      {/* REFRAMING SECTION: Infrastructure vs Tools */}
+      <section className="py-24 bg-slate-950 border-y border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div>
+              <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                {t.infraTitle}
+              </h2>
+              <p className="text-xl text-slate-400 mb-10 leading-relaxed">
+                {t.infraDesc}
+              </p>
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <div className="p-2 bg-cyan-500/10 rounded-lg mr-4 rtl:ml-4 rtl:mr-0 shrink-0"><ShieldCheck className="text-cyan-400" /></div>
+                  <div>
+                    <h4 className="text-lg font-bold text-white mb-1">Infrastructure Producers Outcomes</h4>
+                    <p className="text-slate-500 text-sm">Tools require management. Infrastructure works for you while you sleep.</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="p-2 bg-cyan-500/10 rounded-lg mr-4 rtl:ml-4 rtl:mr-0 shrink-0"><TrendingUp className="text-cyan-400" /></div>
+                  <div>
+                    <h4 className="text-lg font-bold text-white mb-1">Reclaim 20+ Hours a Week</h4>
+                    <p className="text-slate-500 text-sm">Automate the fragmented parts of your funnel into one synchronized engine.</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="p-2 bg-cyan-500/10 rounded-lg mr-4 rtl:ml-4 rtl:mr-0 shrink-0"><Clock className="text-cyan-400" /></div>
+                  <div>
+                    <h4 className="text-lg font-bold text-white mb-1">60-Second Lead Response</h4>
+                    <p className="text-slate-500 text-sm">Speed is your greatest asset. We ensure every lead is captured instantly.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="glass rounded-[3rem] p-8 border-white/10 shadow-2xl overflow-hidden">
+                <div className="absolute top-0 right-0 p-10 opacity-10"><Orbit size={200} /></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-8">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400">System Live Status</span>
+                    <span className="px-3 py-1 bg-green-500/20 text-green-500 text-[10px] font-black rounded-full">ACTIVE</span>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="p-4 bg-slate-900/50 border border-white/5 rounded-2xl flex items-center justify-between">
+                      <div className="flex items-center space-x-3 rtl:space-x-reverse">
+                        <Users size={18} className="text-slate-500" />
+                        <span className="text-sm font-bold text-slate-300">Daily Leads Qualified</span>
+                      </div>
+                      <span className="text-xl font-black text-white">42</span>
+                    </div>
+                    <div className="p-4 bg-slate-900/50 border border-white/5 rounded-2xl flex items-center justify-between">
+                      <div className="flex items-center space-x-3 rtl:space-x-reverse">
+                        <Clock size={18} className="text-slate-500" />
+                        <span className="text-sm font-bold text-slate-300">Avg. Response Time</span>
+                      </div>
+                      <span className="text-xl font-black text-cyan-400">48s</span>
+                    </div>
+                    <div className="p-4 bg-cyan-500 text-slate-900 rounded-2xl flex items-center justify-between">
+                      <span className="text-sm font-black uppercase">Revenue Growth</span>
+                      <span className="text-xl font-black">+320%</span>
+                    </div>
+                  </div>
+                  <div className="mt-8 pt-8 border-t border-white/10 text-center">
+                     <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-4">Ansury Replaces Fragmented Marketing</p>
+                     <button 
+                      onClick={() => setCurrentPage('contact')}
+                      className="w-full py-4 glass border-white/20 text-white font-black rounded-xl hover:bg-white/10 transition-all"
+                     >
+                        Deploy My Engine
+                     </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BENEFIT-DRIVEN SERVICES */}
+      <section className="py-24 bg-slate-900/30">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-black mb-6">{lang === 'en' ? <>{t.dominance.split(' ')[0]} <span className="text-cyan-400">{t.dominance.split(' ')[1]}</span></> : t.dominance}</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto italic">{t.dominanceDesc}</p>
+            <h2 className="text-4xl md:text-6xl font-black mb-6">{t.benefitsHeading}</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">{t.benefitsSub}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -210,13 +291,8 @@ const App: React.FC = () => {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="glass rounded-[3rem] p-12 border-cyan-500/20 relative overflow-hidden group min-h-[500px] flex flex-col justify-center">
-                <div className="relative z-10 animate-in fade-in slide-in-from-right-10 duration-500">
-                  <div className="flex items-center space-x-3 rtl:space-x-reverse mb-8">
-                    <span className="px-4 py-1 bg-cyan-500/10 text-cyan-400 text-[10px] font-black uppercase tracking-widest rounded-full border border-cyan-500/20">{t.activeModule}</span>
-                    <Sparkles size={16} className="text-cyan-400" />
-                  </div>
-                  
+              <div className="glass rounded-[3rem] p-12 border-cyan-500/20 min-h-[500px] flex flex-col justify-center relative overflow-hidden">
+                <div className="relative z-10">
                   <h2 className="text-4xl font-black mb-4 text-white">{SERVICES.find(s => s.id === activeService)?.title[lang]}</h2>
                   <p className="text-lg text-slate-300 mb-10 leading-relaxed max-w-xl">
                     {SERVICES.find(s => s.id === activeService)?.description[lang]}
@@ -224,13 +300,13 @@ const App: React.FC = () => {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                     <div>
-                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">{t.roiLabel}</h4>
+                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Direct Outcome</h4>
                       <p className="text-lg font-semibold text-cyan-400 leading-relaxed">
                         {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].roi[lang]}
                       </p>
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">{t.techStack}</h4>
+                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Infrastructure Stack</h4>
                       <div className="flex flex-wrap gap-2">
                         {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].tools.map((t, idx) => (
                           <span key={idx} className="px-3 py-1 bg-slate-900 rounded-lg text-xs font-bold text-slate-300 border border-white/5">{t}</span>
@@ -239,46 +315,21 @@ const App: React.FC = () => {
                     </div>
                   </div>
 
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">{t.featuresLabel}</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].features[lang].map((f, idx) => (
-                        <div 
-                          key={idx} 
-                          onMouseEnter={() => setHoveredFeature(idx)}
-                          onMouseLeave={() => setHoveredFeature(null)}
-                          className="relative group/feat"
-                        >
-                          <div className="p-4 bg-slate-900/50 rounded-xl border border-white/5 group-hover/feat:border-cyan-500/30 transition-all flex items-center space-x-3 rtl:space-x-reverse h-full cursor-help">
-                            <CheckCircle2 size={16} className="text-cyan-500 shrink-0" />
-                            <span className="text-xs font-medium text-slate-300 group-hover/feat:text-white transition-colors">{f.name}</span>
-                          </div>
-                          
-                          {/* Interactive Tooltip */}
-                          {hoveredFeature === idx && (
-                            <div className={`absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-64 p-5 glass rounded-2xl border-cyan-500/40 shadow-[0_10px_30px_rgba(0,0,0,0.5),0_0_15px_rgba(34,211,238,0.2)] z-[60] animate-in fade-in slide-in-from-bottom-2 duration-300 pointer-events-none`}>
-                              <div className="flex items-center space-x-2 rtl:space-x-reverse mb-2">
-                                <Info size={14} className="text-cyan-400" />
-                                <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400">{lang === 'en' ? 'Protocol' : 'بروتوكول'}</span>
-                              </div>
-                              <p className="text-xs text-slate-200 leading-relaxed font-medium">
-                                {f.explanation}
-                              </p>
-                              {/* Arrow */}
-                              <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-cyan-500/40"></div>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].features[lang].map((f, idx) => (
+                      <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-white/5 flex items-center space-x-3 rtl:space-x-reverse">
+                        <CheckCircle2 size={16} className="text-cyan-500 shrink-0" />
+                        <span className="text-xs font-medium text-slate-300">{f.name}</span>
+                      </div>
+                    ))}
                   </div>
 
                   <div className="mt-12 flex justify-end">
                     <button 
                       onClick={() => setCurrentPage('contact')}
-                      className="px-8 py-4 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 transition-all transform hover:scale-105 active:scale-95 flex items-center"
+                      className="px-8 py-4 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 transition-all flex items-center"
                     >
-                      {t.initStrategy} <ArrowUpRight className="ml-2 rtl:mr-2" size={18} />
+                      Deploy This Infrastructure <ArrowUpRight className="ml-2 rtl:mr-2" size={18} />
                     </button>
                   </div>
                 </div>
@@ -290,10 +341,11 @@ const App: React.FC = () => {
 
       <StrategyGenerator />
 
+      {/* CASE STUDIES */}
       <section className="py-24">
         <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl md:text-6xl font-black mb-6">{lang === 'en' ? <>{t.winsTitle.split(' ')[0]} <span className="text-cyan-400">{t.winsTitle.split(' ')[1]}</span></> : t.winsTitle}</h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-16">{t.winsDesc}</p>
+            <h2 className="text-4xl md:text-6xl font-black mb-6">{t.caseStudiesTitle}</h2>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-16">{t.caseStudiesDesc}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {CASE_STUDIES.map((study) => (
@@ -307,7 +359,7 @@ const App: React.FC = () => {
                 <div className="p-8 flex flex-col flex-grow">
                   <h4 className="text-xs font-bold text-cyan-400 mb-2">{study.client}</h4>
                   <h3 className="text-2xl font-black mb-4 leading-tight">{study.title[lang]}</h3>
-                  <div className="space-y-3 mt-auto">
+                  <div className="space-y-3 mb-8">
                     {study.results[lang].map((res, idx) => (
                       <div key={idx} className="flex items-center text-sm text-slate-300">
                         <CheckCircle2 size={16} className="text-cyan-400 mr-2 rtl:ml-2 shrink-0" />
@@ -315,15 +367,78 @@ const App: React.FC = () => {
                       </div>
                     ))}
                   </div>
+                  <button 
+                    onClick={() => setCurrentPage('portfolio')}
+                    className="mt-auto text-xs font-black uppercase tracking-[0.2em] text-white flex items-center hover:text-cyan-400 transition-colors"
+                  >
+                    View Breakdown <ArrowRight size={14} className="ml-2 rtl:mr-2 rtl:rotate-180" />
+                  </button>
                 </div>
               </div>
             ))}
           </div>
-          
-          <div className="mt-16">
-            <button onClick={() => setCurrentPage('portfolio')} className="px-12 py-4 border border-white/10 hover:border-cyan-500 rounded-full font-bold transition-all inline-flex items-center">
-              {t.seeFullPortfolio} <ArrowRight size={18} className="ml-2 rtl:mr-2 rtl:rotate-180" />
-            </button>
+        </div>
+      </section>
+
+      {/* CONTACT CTA SECTION */}
+      <section id="contact-section" className="py-24 bg-slate-950">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div>
+              <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">{t.contactTitle}</h2>
+              <p className="text-xl text-slate-400 mb-12">{t.contactDesc}</p>
+              
+              <div className="space-y-8">
+                <div className="flex items-start">
+                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Mail className="text-cyan-400" /></div>
+                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Direct Link</h3><p className="text-xl font-bold">hello@ansurysystem.online</p></div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Phone className="text-cyan-400" /></div>
+                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Command Center</h3><p className="text-xl font-bold">+974 51182644</p></div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><MapPin className="text-cyan-400" /></div>
+                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">HQ</h3><p className="text-xl font-bold leading-tight">Level 24, Tornado Tower, Doha, Qatar</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="glass p-8 md:p-12 rounded-[2.5rem] border-white/10 relative">
+              <h3 className="text-2xl font-black mb-8">{t.formTitle}</h3>
+              {submitStatus === 'success' ? (
+                <div className="text-center py-20 animate-in zoom-in duration-300">
+                  <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6"><CheckCircle2 size={40} /></div>
+                  <h4 className="text-3xl font-black mb-4">Blueprint Generated</h4>
+                  <p className="text-slate-400">A strategist will reach out within 4 hours.</p>
+                  <button onClick={() => setSubmitStatus('idle')} className="mt-8 text-cyan-400 font-bold hover:underline">Reset</button>
+                </div>
+              ) : (
+                <form onSubmit={handleContactSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Name</label>
+                      <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.name} onChange={(e) => setContactForm({...contactForm, name: e.target.value})} />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Company</label>
+                      <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.company} onChange={(e) => setContactForm({...contactForm, company: e.target.value})} />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Business Email</label>
+                    <input required type="email" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.email} onChange={(e) => setContactForm({...contactForm, email: e.target.value})} />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Your Biggest Growth Bottleneck</label>
+                    <textarea required rows={4} className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none resize-none" value={contactForm.message} onChange={(e) => setContactForm({...contactForm, message: e.target.value})}></textarea>
+                  </div>
+                  <button disabled={isSubmitting} className="w-full py-5 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 flex items-center justify-center space-x-2">
+                    {isSubmitting ? <Loader2 className="animate-spin" /> : t.send}
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -335,8 +450,8 @@ const App: React.FC = () => {
     return (
       <div className="pt-24 pb-20">
         <div className="container mx-auto px-6 mb-12">
-          <h1 className="text-5xl md:text-7xl font-black mb-6">{lang === 'en' ? <>{t.flagship.split(' ')[0]} <span className="text-cyan-400">{t.flagship.split(' ')[1]}</span></> : t.flagship}</h1>
-          <p className="text-xl text-slate-400 max-w-2xl">{t.flagshipDesc}</p>
+          <h1 className="text-5xl md:text-7xl font-black mb-6">{t.caseStudiesTitle}</h1>
+          <p className="text-xl text-slate-400 max-w-2xl">{t.caseStudiesDesc}</p>
         </div>
 
         <div className="relative w-full h-[600px] md:h-[700px] overflow-hidden bg-slate-950 mb-32">
@@ -349,7 +464,7 @@ const App: React.FC = () => {
             <div className="max-w-3xl">
               <div className="flex items-center space-x-4 rtl:space-x-reverse mb-8">
                 <span className="w-12 h-1 bg-cyan-500"></span>
-                <span className="text-cyan-400 font-black uppercase tracking-[0.4em] text-xs">{t.caseNo} 0{carouselIndex + 1}</span>
+                <span className="text-cyan-400 font-black uppercase tracking-[0.4em] text-xs">Case Exhibit 0{carouselIndex + 1}</span>
               </div>
               <h2 className="text-4xl md:text-7xl font-black text-white mb-6 leading-tight">{activeStudy.title[lang]}</h2>
               <p className="text-xl text-slate-300 mb-10 leading-relaxed">{activeStudy.description[lang]}</p>
@@ -364,8 +479,14 @@ const App: React.FC = () => {
               </div>
 
               <div className="flex items-center space-x-6 rtl:space-x-reverse">
-                <button className="px-10 py-5 bg-cyan-500 text-slate-900 font-black rounded-full hover:bg-cyan-400 transition-all">
-                  {t.readBreakdown}
+                <button 
+                  onClick={() => {
+                    setCurrentPage('contact');
+                    setTimeout(() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' }), 100);
+                  }}
+                  className="px-10 py-5 bg-cyan-500 text-slate-900 font-black rounded-full hover:bg-cyan-400 transition-all"
+                >
+                  Apply These Results to My Business
                 </button>
                 <div className="flex space-x-2 rtl:space-x-reverse">
                   <button onClick={() => setCarouselIndex((carouselIndex - 1 + CASE_STUDIES.length) % CASE_STUDIES.length)} className="p-4 rounded-full border border-white/10 hover:bg-white/5 text-white"><ChevronLeft size={24} className="rtl:rotate-180"/></button>
@@ -379,87 +500,14 @@ const App: React.FC = () => {
     );
   };
 
-  const renderContact = () => (
-    <div id="contact-section" className="pt-32 pb-20">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-          <div>
-            <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight">{t.contactTitle}</h1>
-            <p className="text-xl text-slate-400 mb-12">{t.contactDesc}</p>
-            
-            <div className="space-y-8">
-              <div className="flex items-start">
-                <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Mail className="text-cyan-400" /></div>
-                <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">{t.emailUs}</h3><p className="text-xl font-bold">hello@ansurysystem.online</p></div>
-              </div>
-              <div className="flex items-start">
-                <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Phone className="text-cyan-400" /></div>
-                <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">{t.callUs}</h3><p className="text-xl font-bold">+974 51182644</p></div>
-              </div>
-              <div className="flex items-start">
-                <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><MapPin className="text-cyan-400" /></div>
-                <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">{t.hq}</h3><p className="text-xl font-bold leading-tight">{t.hqAddr}</p></div>
-              </div>
-            </div>
-          </div>
-
-          <div className="glass p-8 md:p-12 rounded-[2.5rem] border-white/10 relative">
-            <h3 className="text-2xl font-black mb-8">{t.formTitle}</h3>
-            {submitStatus === 'success' ? (
-              <div className="text-center py-20 animate-in zoom-in duration-300">
-                <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6"><CheckCircle2 size={40} /></div>
-                <h4 className="text-3xl font-black mb-4">{t.successMsg}</h4>
-                <p className="text-slate-400">{t.successDesc}</p>
-                <button onClick={() => setSubmitStatus('idle')} className="mt-8 text-cyan-400 font-bold hover:underline">Reset</button>
-              </div>
-            ) : (
-              <form onSubmit={handleContactSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{t.fullName}</label>
-                    <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.name} onChange={(e) => setContactForm({...contactForm, name: e.target.value})} />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{t.company}</label>
-                    <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.company} onChange={(e) => setContactForm({...contactForm, company: e.target.value})} />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{t.email}</label>
-                  <input required type="email" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.email} onChange={(e) => setContactForm({...contactForm, email: e.target.value})} />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{t.msg}</label>
-                  <textarea required rows={4} className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none resize-none" value={contactForm.message} onChange={(e) => setContactForm({...contactForm, message: e.target.value})}></textarea>
-                </div>
-                <button disabled={isSubmitting} className="w-full py-5 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 flex items-center justify-center space-x-2">
-                  {isSubmitting ? <Loader2 className="animate-spin" /> : t.send}
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderContent = () => {
-    switch (currentPage) {
-      case 'portfolio': return renderPortfolio();
-      case 'contact': return renderContact();
-      case 'services': return renderHome();
-      default: return renderHome();
-    }
-  };
-
   return (
     <div className={`min-h-screen ${lang === 'ar' ? 'font-arabic' : ''}`}>
       <Navbar currentPage={currentPage} setPage={setCurrentPage} lang={lang} toggleLang={toggleLang} />
-      <main>{renderContent()}</main>
+      <main>{currentPage === 'portfolio' ? renderPortfolio() : renderHome()}</main>
       
       {/* WhatsApp Floating Button */}
       <a 
-        href={`https://wa.me/97451182644?text=${encodeURIComponent(lang === 'en' ? 'Hello Ansury Systems, I would like to learn more about your autonomous lead engines.' : 'مرحباً أنسوري للأنظمة، أود معرفة المزيد عن محركات توليد العملاء التلقائية لديك.')}`}
+        href={`https://wa.me/97451182644?text=${encodeURIComponent(lang === 'en' ? 'Hello Ansury Systems, I would like to learn more about your autonomous growth infrastructure.' : 'مرحباً أنسوري للأنظمة، أود معرفة المزيد عن بنيتك التحتية للنمو الذاتي.')}`}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-8 left-8 z-[100] group flex items-center"
@@ -498,21 +546,21 @@ const App: React.FC = () => {
               </div>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Command</h4>
+              <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Direct Access</h4>
               <ul className="space-y-4 text-slate-400 text-sm">
                 <li onClick={() => setCurrentPage('home')} className="hover:text-cyan-400 cursor-pointer transition-colors">Home</li>
                 <li onClick={() => setCurrentPage('portfolio')} className="hover:text-cyan-400 cursor-pointer transition-colors">Success Stories</li>
-                <li onClick={() => setCurrentPage('contact')} className="hover:text-cyan-400 cursor-pointer transition-colors">Contact</li>
+                <li onClick={() => setCurrentPage('contact')} className="hover:text-cyan-400 cursor-pointer transition-colors">Get My Blueprint</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Direct Link</h4>
+              <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Contact Headquarters</h4>
               <p className="text-slate-400 text-sm mb-2">+974 51182644</p>
               <p className="text-slate-400 text-sm">hello@ansurysystem.online</p>
             </div>
           </div>
           <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-slate-600 font-bold uppercase tracking-widest">
-            <p>© 2024 Ansury Systems LLC. All rights reserved.</p>
+            <p>© 2024 Ansury Systems LLC. Registered in Qatar.</p>
           </div>
         </div>
       </footer>
