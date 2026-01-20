@@ -430,6 +430,154 @@ const App: React.FC = () => {
     </>
   );
 
+  const renderServices = () => {
+    return (
+      <div className="pt-24 pb-20">
+        <div className="container mx-auto px-6 mb-24">
+          <div className="max-w-3xl mb-16">
+            <h1 className="text-5xl md:text-7xl font-black mb-6">{t.servicesTitle}</h1>
+            <p className="text-xl text-slate-400">{t.servicesDesc}</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-5 space-y-3">
+              {SERVICES.map((s) => (
+                <div 
+                  key={s.id}
+                  onMouseEnter={() => setActiveService(s.id)}
+                  onClick={() => setActiveService(s.id)}
+                  className={`p-6 rounded-2xl cursor-pointer transition-all border ${activeService === s.id ? 'glass border-cyan-500/50 scale-[1.02] opacity-100 shadow-[0_0_20px_rgba(34,211,238,0.1)]' : 'border-transparent opacity-40 grayscale hover:opacity-60'}`}
+                >
+                  <div className="flex items-center space-x-6 rtl:space-x-reverse">
+                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${activeService === s.id ? 'bg-cyan-500' : 'bg-slate-800'}`}>
+                      {getIcon(s.icon, 24, activeService === s.id)}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-black">{s.title[lang]}</h3>
+                      <p className="text-sm text-slate-400 line-clamp-2">{s.description[lang]}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="lg:col-span-7">
+              <div className="glass rounded-[3rem] p-12 border-cyan-500/20 min-h-[500px] flex flex-col justify-center relative overflow-hidden">
+                <div className="relative z-10 animate-in fade-in slide-in-from-right-10 duration-500">
+                  <h2 className="text-4xl font-black mb-4 text-white">{SERVICES.find(s => s.id === activeService)?.title[lang]}</h2>
+                  <p className="text-lg text-slate-300 mb-10 leading-relaxed max-w-xl">
+                    {SERVICES.find(s => s.id === activeService)?.description[lang]}
+                  </p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Market Impact</h4>
+                      <p className="text-lg font-semibold text-cyan-400 leading-relaxed">
+                        {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].roi[lang]}
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Global Tech Stack</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].tools.map((t, idx) => (
+                          <span key={idx} className="px-3 py-1 bg-slate-900 rounded-lg text-xs font-bold text-slate-300 border border-white/5">{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].features[lang].map((f, idx) => (
+                      <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-white/5 flex items-center space-x-3 rtl:space-x-reverse">
+                        <CheckCircle2 size={16} className="text-cyan-500 shrink-0" />
+                        <span className="text-xs font-medium text-slate-300">{f.name}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-12 flex justify-end">
+                    <button 
+                      onClick={() => setCurrentPage('contact')}
+                      className="px-8 py-4 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 transition-all flex items-center group"
+                    >
+                      Deploy Infrastructure <ArrowUpRight className="ml-2 rtl:mr-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={18} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderContact = () => {
+    return (
+      <div className="pt-24 pb-20">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div>
+              <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight">{t.contactTitle}</h1>
+              <p className="text-xl text-slate-400 mb-12">{t.contactDesc}</p>
+              
+              <div className="space-y-8">
+                <div className="flex items-start">
+                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Mail className="text-cyan-400" /></div>
+                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Regional Liaison</h3><p className="text-xl font-bold">hello@ansurysystem.online</p></div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Phone className="text-cyan-400" /></div>
+                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Command Center</h3><p className="text-xl font-bold">+974 51182644</p></div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Globe className="text-cyan-400" /></div>
+                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Operational Bases</h3><p className="text-xl font-bold leading-tight">Riyadh • Dubai • Doha • Kuwait City</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="glass p-8 md:p-12 rounded-[2.5rem] border-white/10 relative">
+              <h3 className="text-2xl font-black mb-8">{t.formTitle}</h3>
+              {submitStatus === 'success' ? (
+                <div className="text-center py-20 animate-in zoom-in duration-300">
+                  <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6"><CheckCircle2 size={40} /></div>
+                  <h4 className="text-3xl font-black mb-4">Blueprint Protocol Initiated</h4>
+                  <p className="text-slate-400">A senior regional strategist will contact you within 4 hours.</p>
+                  <button onClick={() => setSubmitStatus('idle')} className="mt-8 text-cyan-400 font-bold hover:underline">Reset</button>
+                </div>
+              ) : (
+                <form onSubmit={handleContactSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Full Name</label>
+                      <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.name} onChange={(e) => setContactForm({...contactForm, name: e.target.value})} />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Regional Company</label>
+                      <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.company} onChange={(e) => setContactForm({...contactForm, company: e.target.value})} />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Business Email</label>
+                    <input required type="email" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.email} onChange={(e) => setContactForm({...contactForm, email: e.target.value})} />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Regional Growth Bottleneck</label>
+                    <textarea required rows={4} className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none resize-none" value={contactForm.message} onChange={(e) => setContactForm({...contactForm, message: e.target.value})}></textarea>
+                  </div>
+                  <button disabled={isSubmitting} className="w-full py-5 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 flex items-center justify-center space-x-2 transition-all">
+                    {isSubmitting ? <Loader2 className="animate-spin" /> : t.send}
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const renderPortfolio = () => {
     const activeStudy = CASE_STUDIES[carouselIndex];
     return (
@@ -488,7 +636,12 @@ const App: React.FC = () => {
   return (
     <div className={`min-h-screen ${lang === 'ar' ? 'font-arabic' : ''}`}>
       <Navbar currentPage={currentPage} setPage={setCurrentPage} lang={lang} toggleLang={toggleLang} />
-      <main>{currentPage === 'portfolio' ? renderPortfolio() : renderHome()}</main>
+      <main>
+        {currentPage === 'home' && renderHome()}
+        {currentPage === 'portfolio' && renderPortfolio()}
+        {currentPage === 'services' && renderServices()}
+        {currentPage === 'contact' && renderContact()}
+      </main>
       
       {/* WhatsApp Regional Connector */}
       <a 
