@@ -24,7 +24,8 @@ import {
   LayoutTemplate,
   BrainCircuit,
   Zap,
-  LineChart
+  LineChart,
+  Globe
 } from 'lucide-react';
 import Navbar from './components/Navbar';
 import StrategyGenerator from './components/StrategyGenerator';
@@ -37,7 +38,6 @@ const App: React.FC = () => {
   const [lang, setLang] = useState<Language>('en');
   const [activeService, setActiveService] = useState<string>(SERVICES[0].id);
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
 
   // Form State
   const [contactForm, setContactForm] = useState({ name: '', company: '', email: '', budget: '10,000 - 50,000', message: '' });
@@ -54,7 +54,7 @@ const App: React.FC = () => {
     if (currentPage === 'portfolio') {
       const timer = setInterval(() => {
         setCarouselIndex(prev => (prev + 1) % CASE_STUDIES.length);
-      }, 6000);
+      }, 7000);
       return () => clearInterval(timer);
     }
   }, [currentPage]);
@@ -70,7 +70,7 @@ const App: React.FC = () => {
       const response = await fetch('https://formspree.io/f/mzdzlldz', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...contactForm, source: 'Contact Form Main', lang, agency: 'Ansury Systems' })
+        body: JSON.stringify({ ...contactForm, source: 'Contact Form Regional', lang, agency: 'Ansury Systems' })
       });
       
       if (response.ok) {
@@ -98,32 +98,32 @@ const App: React.FC = () => {
   };
 
   const t = {
-    heroTag: lang === 'en' ? "Stop Leaking Revenue" : "توقف عن خسارة الإيرادات",
-    heroTitle: lang === 'en' ? "Stop Missing Leads While You Sleep. Convert Them Automatically." : "توقف عن فقدان العملاء أثناء نومك. حولهم تلقائيًا.",
+    heroTag: lang === 'en' ? "The GCC's Autonomous Growth Leader" : "قائد النمو الذاتي في دول الخليج",
+    heroTitle: lang === 'en' ? "Stop Missing High-Value Leads. Convert Them While You Sleep." : "توقف عن فقدان العملاء الكبار. حولهم أثناء نومك.",
     heroDesc: lang === 'en' 
-      ? "Ansury installs AI growth infrastructure that captures, qualifies, and books meetings with your ideal clients 24/7. No extra staff. No manual follow-up." 
-      : "أنسوري تقوم بتثبيت بنية تحتية للنمو تجذب وتؤهل وتحجز المواعيد مع عملائك المثاليين 24/7. بدون موظفين إضافيين. بدون متابعة يدوية.",
-    ctaStart: lang === 'en' ? "Get My AI Growth Blueprint" : "احصل على مخطط نمو الذكاء الاصطناعي الخاص بي",
-    ctaPortfolio: lang === 'en' ? "Show Me How This Pays for Itself" : "أرني كيف يغطي هذا تكلفته بنفسه",
+      ? "From Riyadh to Dubai, Ansury installs the AI infrastructure that captures, qualifies, and books meetings with the Middle East's elite 24/7. No extra staff. No manual friction." 
+      : "من الرياض إلى دبي، أنسوري تقوم بتثبيت بنية تحتية للنمو تجذب وتؤهل وتحجز المواعيد مع النخبة في الشرق الأوسط 24/7. بدون موظفين إضافيين. بدون عوائق يدوية.",
+    ctaStart: lang === 'en' ? "Get My Regional Growth Blueprint" : "احصل على مخطط النمو الإقليمي الخاص بي",
+    ctaPortfolio: lang === 'en' ? "Show Me the ROI Proof" : "أرني دليل عائد الاستثمار",
     
-    infraTitle: lang === 'en' ? "We Don't Sell Tools. We Install Outcomes." : "نحن لا نبيع أدوات. نحن نثبت نتائج.",
-    infraDesc: lang === 'en' ? "Most companies hire people to manage growth. We automate growth so your people can focus on closing deals." : "معظم الشركات توظف أشخاصًا لإدارة النمو. نحن نؤتمت النمو ليتفرغ موظفوك لإبرام الصفقات.",
+    infraTitle: lang === 'en' ? "We Don't Install Tools. We Install Outcomes." : "نحن لا نثبت أدوات. نحن نثبت نتائج.",
+    infraDesc: lang === 'en' ? "Most Middle Eastern companies hire more people to manage growth. We automate the engine so your people can focus on closing high-ticket deals." : "معظم الشركات في الشرق الأوسط توظف المزيد من الأشخاص لإدارة النمو. نحن نؤتمت المحرك ليتفرغ موظفوك لإغلاق الصفقات الكبرى.",
     
-    benefitsHeading: lang === 'en' ? "Your Sales Team Talks Only to Paying Opportunities — Never Tire-Kickers." : "فريق مبيعاتك يتحدث فقط مع المشترين الجادين - لا تضيع وقتك مع الفضوليين.",
-    benefitsSub: lang === 'en' ? "Our synchronized Growth Engine replaces fragmented marketing with one high-performance system." : "محرك النمو المتزامن لدينا يستبدل التسويق المجزأ بنظام واحد عالي الأداء.",
+    benefitsHeading: lang === 'en' ? "Your Sales Team Talks Only to Qualified Buyers — Never Tire-Kickers." : "فريق مبيعاتك يتحدث فقط مع المشترين الجادين - لا تضيع وقتك مع الفضوليين.",
+    benefitsSub: lang === 'en' ? "Our synchronized Growth Engine replaces fragmented marketing with one high-performance system for the Khaleej." : "محرك النمو المتزامن لدينا يستبدل التسويق المجزأ بنظام واحد عالي الأداء لمنطقة الخليج.",
     
-    proofTitle: lang === 'en' ? "Trusted by High-Status Qatari Businesses" : "موثوق من قبل الشركات القطرية المرموقة",
+    proofTitle: lang === 'en' ? "Dominating Markets in Riyadh • Dubai • Doha • Kuwait" : "الهيمنة على أسواق الرياض • دبي • الدوحة • الكويت",
     
-    caseStudiesTitle: lang === 'en' ? "Proof That Growth Can Be Autonomous." : "دليل على أن النمو يمكن أن يكون ذاتيًا.",
-    caseStudiesDesc: lang === 'en' ? "See how we've turned manual businesses into 24/7 lead machines with zero leakage." : "تعرف على كيفية تحويلنا للأعمال اليدوية إلى آلات لجذب العملاء تعمل 24/7 بدون أي تسرب.",
+    caseStudiesTitle: lang === 'en' ? "Regional Results That Speak for Themselves." : "نتائج إقليمية تتحدث عن نفسها.",
+    caseStudiesDesc: lang === 'en' ? "See how we've turned manual GCC businesses into 24/7 autonomous lead machines." : "تعرف على كيفية تحويلنا للأعمال اليدوية في الخليج إلى آلات عملاء ذاتية تعمل 24/7.",
 
-    contactTitle: lang === 'en' ? "Ready to Install Your Growth Engine?" : "جاهز لتثبيت محرك النمو الخاص بك؟",
-    contactDesc: lang === 'en' ? "Schedule a consultation to see how our infrastructure can buy back 20+ hours of your sales team's week." : "حدد موعدًا لاستشارة لتعرف كيف يمكن لبنيتنا التحتية استعادة أكثر من 20 ساعة من أسبوع فريق مبيعاتك.",
+    contactTitle: lang === 'en' ? "Ready to Scale Across the Khaleej?" : "جاهز للتوسع عبر الخليج؟",
+    contactDesc: lang === 'en' ? "Schedule a consultation to see how our infrastructure can buy back 25+ hours of your sales leadership's week." : "حدد موعدًا لاستشارة لتعرف كيف يمكن لبنيتنا التحتية استعادة أكثر من 25 ساعة من أسبوع قيادة المبيعات.",
     
-    formTitle: lang === 'en' ? "Claim Your Custom ROI Blueprint" : "احصل على مخطط عائد الاستثمار المخصص لك",
-    send: lang === 'en' ? "Get My Blueprint Now" : "احصل على مخططي الآن",
+    formTitle: lang === 'en' ? "Claim Your Custom Regional ROI Blueprint" : "احصل على مخطط عائد الاستثمار الإقليمي المخصص لك",
+    send: lang === 'en' ? "Initiate My Blueprint" : "ابدأ مخططي الآن",
     
-    whatsappLabel: lang === 'en' ? "Speak to a Strategist" : "تحدث إلى استراتيجي",
+    whatsappLabel: lang === 'en' ? "Connect with a Regional Strategist" : "تواصل مع استراتيجي إقليمي",
     footerHome: lang === 'en' ? 'Home' : 'الرئيسية',
     footerSuccess: lang === 'en' ? 'Success Stories' : 'قصص النجاح',
     footerBlueprint: lang === 'en' ? 'Get My Blueprint' : 'احصل على مخططي',
@@ -132,14 +132,14 @@ const App: React.FC = () => {
 
   const renderHome = () => (
     <>
-      {/* ABOVE THE FOLD HERO */}
+      {/* HERO SECTION */}
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute top-0 -left-4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
         <div className="absolute top-0 -right-4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
 
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="inline-flex items-center space-x-2 rtl:space-x-reverse bg-slate-900 border border-slate-700 px-4 py-2 rounded-full mb-8 animate-in fade-in slide-in-from-bottom duration-700">
-            <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            <Globe size={14} className="text-cyan-400" />
             <span className="text-xs font-bold tracking-widest uppercase text-slate-300">{t.heroTag}</span>
           </div>
           
@@ -147,7 +147,7 @@ const App: React.FC = () => {
             {t.heroTitle}
           </h1>
           
-          <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+          <p className="text-xl md:text-2xl text-slate-400 max-w-4xl mx-auto mb-12 leading-relaxed">
             {t.heroDesc}
           </p>
 
@@ -169,21 +169,21 @@ const App: React.FC = () => {
             </button>
           </div>
           
-          {/* Quick Social Proof Headers */}
+          {/* Regional Proof Headers */}
           <div className="mt-20 pt-10 border-t border-white/5 opacity-50 grayscale hover:grayscale-0 transition-all">
             <p className="text-[10px] font-black uppercase tracking-[0.4em] mb-6 text-slate-500">{t.proofTitle}</p>
             <div className="flex flex-wrap items-center justify-center gap-12 md:gap-24">
-               <div className="flex items-center space-x-2"><Orbit size={20}/><span className="text-lg font-bold">LUSAIL REALTY</span></div>
-               <div className="flex items-center space-x-2"><Orbit size={20}/><span className="text-lg font-bold">PEARL DENTAL</span></div>
-               <div className="flex items-center space-x-2"><Orbit size={20}/><span className="text-lg font-bold">WEST BAY LEGAL</span></div>
-               <div className="flex items-center space-x-2"><Orbit size={20}/><span className="text-lg font-bold">DOHA HOLDINGS</span></div>
+               <div className="flex items-center space-x-2"><Orbit size={20}/><span className="text-lg font-bold">AL-MAJD RIYADH</span></div>
+               <div className="flex items-center space-x-2"><Orbit size={20}/><span className="text-lg font-bold">APEX DUBAI</span></div>
+               <div className="flex items-center space-x-2"><Orbit size={20}/><span className="text-lg font-bold">ROYAL HEALTH KUWAIT</span></div>
+               <div className="flex items-center space-x-2"><Orbit size={20}/><span className="text-lg font-bold">LUSAIL DOHA</span></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* REFRAMING SECTION: Infrastructure vs Tools */}
-      <section className="py-24 bg-slate-950 border-y border-white/5">
+      {/* REFRAMING SECTION */}
+      <section className="py-24 bg-slate-950 border-y border-white/5 relative">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
@@ -193,66 +193,49 @@ const App: React.FC = () => {
               <p className="text-xl text-slate-400 mb-10 leading-relaxed">
                 {t.infraDesc}
               </p>
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="p-2 bg-cyan-500/10 rounded-lg mr-4 rtl:ml-4 rtl:mr-0 shrink-0"><ShieldCheck className="text-cyan-400" /></div>
-                  <div>
-                    <h4 className="text-lg font-bold text-white mb-1">Infrastructure Producers Outcomes</h4>
-                    <p className="text-slate-500 text-sm">Tools require management. Infrastructure works for you while you sleep.</p>
-                  </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="p-6 glass rounded-2xl border-white/5">
+                  <ShieldCheck size={28} className="text-cyan-400 mb-4" />
+                  <h4 className="text-lg font-bold text-white mb-2">Infrastructure > Tools</h4>
+                  <p className="text-slate-500 text-sm">Tools need managers. Infrastructure builds your empire autonomously.</p>
                 </div>
-                <div className="flex items-start">
-                  <div className="p-2 bg-cyan-500/10 rounded-lg mr-4 rtl:ml-4 rtl:mr-0 shrink-0"><TrendingUp className="text-cyan-400" /></div>
-                  <div>
-                    <h4 className="text-lg font-bold text-white mb-1">Reclaim 20+ Hours a Week</h4>
-                    <p className="text-slate-500 text-sm">Automate the fragmented parts of your funnel into one synchronized engine.</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="p-2 bg-cyan-500/10 rounded-lg mr-4 rtl:ml-4 rtl:mr-0 shrink-0"><Clock className="text-cyan-400" /></div>
-                  <div>
-                    <h4 className="text-lg font-bold text-white mb-1">60-Second Lead Response</h4>
-                    <p className="text-slate-500 text-sm">Speed is your greatest asset. We ensure every lead is captured instantly.</p>
-                  </div>
+                <div className="p-6 glass rounded-2xl border-white/5">
+                  <TrendingUp size={28} className="text-cyan-400 mb-4" />
+                  <h4 className="text-lg font-bold text-white mb-2">Regional Scaling</h4>
+                  <p className="text-slate-500 text-sm">Synchronize funnels across Saudi, UAE, Qatar, and Kuwait in one engine.</p>
                 </div>
               </div>
             </div>
-            <div className="relative">
-              <div className="glass rounded-[3rem] p-8 border-white/10 shadow-2xl overflow-hidden">
-                <div className="absolute top-0 right-0 p-10 opacity-10"><Orbit size={200} /></div>
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-8">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400">System Live Status</span>
-                    <span className="px-3 py-1 bg-green-500/20 text-green-500 text-[10px] font-black rounded-full">ACTIVE</span>
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-[3rem] blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+              <div className="relative glass rounded-[3rem] p-10 border-white/10 shadow-2xl overflow-hidden">
+                <div className="flex items-center justify-between mb-10">
+                  <span className="text-xs font-black uppercase tracking-widest text-cyan-400 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Regional System Online
+                  </span>
+                  <div className="flex gap-2">
+                     <span className="px-3 py-1 bg-slate-900 rounded-lg text-[10px] font-bold">RIYADH</span>
+                     <span className="px-3 py-1 bg-slate-900 rounded-lg text-[10px] font-bold">DUBAI</span>
+                     <span className="px-3 py-1 bg-slate-900 rounded-lg text-[10px] font-bold text-cyan-400 border border-cyan-500/30">DOHA</span>
                   </div>
-                  <div className="space-y-4">
-                    <div className="p-4 bg-slate-900/50 border border-white/5 rounded-2xl flex items-center justify-between">
-                      <div className="flex items-center space-x-3 rtl:space-x-reverse">
-                        <Users size={18} className="text-slate-500" />
-                        <span className="text-sm font-bold text-slate-300">Daily Leads Qualified</span>
-                      </div>
-                      <span className="text-xl font-black text-white">42</span>
-                    </div>
-                    <div className="p-4 bg-slate-900/50 border border-white/5 rounded-2xl flex items-center justify-between">
-                      <div className="flex items-center space-x-3 rtl:space-x-reverse">
-                        <Clock size={18} className="text-slate-500" />
-                        <span className="text-sm font-bold text-slate-300">Avg. Response Time</span>
-                      </div>
-                      <span className="text-xl font-black text-cyan-400">48s</span>
-                    </div>
-                    <div className="p-4 bg-cyan-500 text-slate-900 rounded-2xl flex items-center justify-between">
-                      <span className="text-sm font-black uppercase">Revenue Growth</span>
-                      <span className="text-xl font-black">+320%</span>
-                    </div>
+                </div>
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-slate-400">Total GCC Pipeline</span>
+                    <span className="text-2xl font-black text-white">$42,500,000</span>
                   </div>
-                  <div className="mt-8 pt-8 border-t border-white/10 text-center">
-                     <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-4">Ansury Replaces Fragmented Marketing</p>
-                     <button 
-                      onClick={() => setCurrentPage('contact')}
-                      className="w-full py-4 glass border-white/20 text-white font-black rounded-xl hover:bg-white/10 transition-all"
-                     >
-                        Deploy My Engine
-                     </button>
+                  <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
+                    <div className="bg-cyan-500 h-full w-[85%]"></div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4 pt-4">
+                    <div className="p-4 bg-slate-900/50 rounded-xl">
+                      <p className="text-[10px] font-bold text-slate-500 uppercase mb-1">Qual. Accuracy</p>
+                      <p className="text-xl font-black text-cyan-400">98.2%</p>
+                    </div>
+                    <div className="p-4 bg-slate-900/50 rounded-xl">
+                      <p className="text-[10px] font-bold text-slate-500 uppercase mb-1">Avg. Response</p>
+                      <p className="text-xl font-black text-cyan-400">54s</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -261,12 +244,12 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* BENEFIT-DRIVEN SERVICES */}
+      {/* SERVICES SECTION */}
       <section className="py-24 bg-slate-900/30">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-black mb-6">{t.benefitsHeading}</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">{t.benefitsSub}</p>
+            <p className="text-slate-400 max-w-2xl mx-auto italic">{t.benefitsSub}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -274,10 +257,7 @@ const App: React.FC = () => {
               {SERVICES.map((s) => (
                 <div 
                   key={s.id}
-                  onMouseEnter={() => {
-                    setActiveService(s.id);
-                    setHoveredFeature(null);
-                  }}
+                  onMouseEnter={() => setActiveService(s.id)}
                   onClick={() => setActiveService(s.id)}
                   className={`p-6 rounded-2xl cursor-pointer transition-all border ${activeService === s.id ? 'glass border-cyan-500/50 scale-[1.02] opacity-100 shadow-[0_0_20px_rgba(34,211,238,0.1)]' : 'border-transparent opacity-40 grayscale hover:opacity-60'}`}
                 >
@@ -296,7 +276,7 @@ const App: React.FC = () => {
 
             <div className="lg:col-span-7">
               <div className="glass rounded-[3rem] p-12 border-cyan-500/20 min-h-[500px] flex flex-col justify-center relative overflow-hidden">
-                <div className="relative z-10">
+                <div className="relative z-10 animate-in fade-in slide-in-from-right-10 duration-500">
                   <h2 className="text-4xl font-black mb-4 text-white">{SERVICES.find(s => s.id === activeService)?.title[lang]}</h2>
                   <p className="text-lg text-slate-300 mb-10 leading-relaxed max-w-xl">
                     {SERVICES.find(s => s.id === activeService)?.description[lang]}
@@ -304,13 +284,13 @@ const App: React.FC = () => {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                     <div>
-                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Direct Outcome</h4>
+                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Market Impact</h4>
                       <p className="text-lg font-semibold text-cyan-400 leading-relaxed">
                         {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].roi[lang]}
                       </p>
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Infrastructure Stack</h4>
+                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Global Tech Stack</h4>
                       <div className="flex flex-wrap gap-2">
                         {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].tools.map((t, idx) => (
                           <span key={idx} className="px-3 py-1 bg-slate-900 rounded-lg text-xs font-bold text-slate-300 border border-white/5">{t}</span>
@@ -331,9 +311,9 @@ const App: React.FC = () => {
                   <div className="mt-12 flex justify-end">
                     <button 
                       onClick={() => setCurrentPage('contact')}
-                      className="px-8 py-4 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 transition-all flex items-center"
+                      className="px-8 py-4 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 transition-all flex items-center group"
                     >
-                      Deploy This Infrastructure <ArrowUpRight className="ml-2 rtl:mr-2" size={18} />
+                      Deploy Infrastructure <ArrowUpRight className="ml-2 rtl:mr-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={18} />
                     </button>
                   </div>
                 </div>
@@ -345,29 +325,30 @@ const App: React.FC = () => {
 
       <StrategyGenerator />
 
-      {/* CASE STUDIES */}
+      {/* EXPANDED PORTFOLIO PREVIEW */}
       <section className="py-24">
         <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl md:text-6xl font-black mb-6">{t.caseStudiesTitle}</h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-16">{t.caseStudiesDesc}</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {CASE_STUDIES.map((study) => (
-              <div key={study.id} className="group overflow-hidden rounded-3xl glass flex flex-col h-full text-left rtl:text-right">
-                <div className="relative h-72 overflow-hidden">
-                  <img src={study.image} alt={study.client} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4">
-                    <span className="px-4 py-1 bg-slate-900/80 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest rounded-full border border-white/10">{study.category[lang]}</span>
+              <div key={study.id} className="group overflow-hidden rounded-[2.5rem] glass flex flex-col h-full text-left rtl:text-right border border-white/5 hover:border-cyan-500/30 transition-all duration-500">
+                <div className="relative h-80 overflow-hidden">
+                  <img src={study.image} alt={study.client} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent opacity-60"></div>
+                  <div className="absolute bottom-6 left-6 rtl:left-auto rtl:right-6">
+                    <span className="px-4 py-1 bg-cyan-500 text-slate-900 text-[10px] font-black uppercase tracking-widest rounded-full">{study.category[lang]}</span>
                   </div>
                 </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <h4 className="text-xs font-bold text-cyan-400 mb-2">{study.client}</h4>
-                  <h3 className="text-2xl font-black mb-4 leading-tight">{study.title[lang]}</h3>
-                  <div className="space-y-3 mb-8">
+                <div className="p-10 flex flex-col flex-grow">
+                  <h4 className="text-sm font-bold text-cyan-400 mb-2 uppercase tracking-widest">{study.client}</h4>
+                  <h3 className="text-2xl md:text-3xl font-black mb-6 leading-tight">{study.title[lang]}</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                     {study.results[lang].map((res, idx) => (
-                      <div key={idx} className="flex items-center text-sm text-slate-300">
-                        <CheckCircle2 size={16} className="text-cyan-400 mr-2 rtl:ml-2 shrink-0" />
-                        <span>{res}</span>
+                      <div key={idx} className="p-3 bg-slate-900/50 rounded-xl border border-white/5">
+                        <p className="text-xs font-bold text-slate-500 uppercase mb-1">{res.split(' ').slice(1).join(' ')}</p>
+                        <p className="text-lg font-black text-white">{res.split(' ')[0]}</p>
                       </div>
                     ))}
                   </div>
@@ -375,7 +356,7 @@ const App: React.FC = () => {
                     onClick={() => setCurrentPage('portfolio')}
                     className="mt-auto text-xs font-black uppercase tracking-[0.2em] text-white flex items-center hover:text-cyan-400 transition-colors"
                   >
-                    View Breakdown <ArrowRight size={14} className="ml-2 rtl:mr-2 rtl:rotate-180" />
+                    View Operational Data <ArrowRight size={14} className="ml-2 rtl:mr-2 rtl:rotate-180" />
                   </button>
                 </div>
               </div>
@@ -384,7 +365,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* CONTACT CTA SECTION */}
+      {/* REGIONAL CONTACT */}
       <section id="contact-section" className="py-24 bg-slate-950">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
@@ -395,15 +376,15 @@ const App: React.FC = () => {
               <div className="space-y-8">
                 <div className="flex items-start">
                   <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Mail className="text-cyan-400" /></div>
-                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Direct Link</h3><p className="text-xl font-bold">hello@ansurysystem.online</p></div>
+                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Regional Liaison</h3><p className="text-xl font-bold">hello@ansurysystem.online</p></div>
                 </div>
                 <div className="flex items-start">
                   <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Phone className="text-cyan-400" /></div>
                   <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Command Center</h3><p className="text-xl font-bold">+974 51182644</p></div>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><MapPin className="text-cyan-400" /></div>
-                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">HQ</h3><p className="text-xl font-bold leading-tight">Level 24, Tornado Tower, Doha, Qatar</p></div>
+                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Globe className="text-cyan-400" /></div>
+                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Operational Bases</h3><p className="text-xl font-bold leading-tight">Riyadh • Dubai • Doha • Kuwait City</p></div>
                 </div>
               </div>
             </div>
@@ -413,19 +394,19 @@ const App: React.FC = () => {
               {submitStatus === 'success' ? (
                 <div className="text-center py-20 animate-in zoom-in duration-300">
                   <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6"><CheckCircle2 size={40} /></div>
-                  <h4 className="text-3xl font-black mb-4">Blueprint Generated</h4>
-                  <p className="text-slate-400">A strategist will reach out within 4 hours.</p>
+                  <h4 className="text-3xl font-black mb-4">Blueprint Protocol Initiated</h4>
+                  <p className="text-slate-400">A senior regional strategist will contact you within 4 hours.</p>
                   <button onClick={() => setSubmitStatus('idle')} className="mt-8 text-cyan-400 font-bold hover:underline">Reset</button>
                 </div>
               ) : (
                 <form onSubmit={handleContactSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Name</label>
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Full Name</label>
                       <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.name} onChange={(e) => setContactForm({...contactForm, name: e.target.value})} />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Company</label>
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Regional Company</label>
                       <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.company} onChange={(e) => setContactForm({...contactForm, company: e.target.value})} />
                     </div>
                   </div>
@@ -434,10 +415,10 @@ const App: React.FC = () => {
                     <input required type="email" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.email} onChange={(e) => setContactForm({...contactForm, email: e.target.value})} />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Your Biggest Growth Bottleneck</label>
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Regional Growth Bottleneck</label>
                     <textarea required rows={4} className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none resize-none" value={contactForm.message} onChange={(e) => setContactForm({...contactForm, message: e.target.value})}></textarea>
                   </div>
-                  <button disabled={isSubmitting} className="w-full py-5 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 flex items-center justify-center space-x-2">
+                  <button disabled={isSubmitting} className="w-full py-5 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 flex items-center justify-center space-x-2 transition-all">
                     {isSubmitting ? <Loader2 className="animate-spin" /> : t.send}
                   </button>
                 </form>
@@ -458,25 +439,25 @@ const App: React.FC = () => {
           <p className="text-xl text-slate-400 max-w-2xl">{t.caseStudiesDesc}</p>
         </div>
 
-        <div className="relative w-full h-[600px] md:h-[700px] overflow-hidden bg-slate-950 mb-32">
+        <div className="relative w-full h-[600px] md:h-[750px] overflow-hidden bg-slate-950 mb-32">
           <div className="absolute inset-0 transition-all duration-1000">
             <img key={activeStudy.id} src={activeStudy.image} className="w-full h-full object-cover opacity-40" alt={activeStudy.client} />
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/40 to-transparent rtl:bg-gradient-to-l"></div>
           
           <div className="container mx-auto h-full px-6 relative z-10 flex items-center">
-            <div className="max-w-3xl">
+            <div className="max-w-4xl">
               <div className="flex items-center space-x-4 rtl:space-x-reverse mb-8">
                 <span className="w-12 h-1 bg-cyan-500"></span>
-                <span className="text-cyan-400 font-black uppercase tracking-[0.4em] text-xs">Case Exhibit 0{carouselIndex + 1}</span>
+                <span className="text-cyan-400 font-black uppercase tracking-[0.4em] text-xs">Regional Success Case 0{carouselIndex + 1}</span>
               </div>
               <h2 className="text-4xl md:text-7xl font-black text-white mb-6 leading-tight">{activeStudy.title[lang]}</h2>
-              <p className="text-xl text-slate-300 mb-10 leading-relaxed">{activeStudy.description[lang]}</p>
+              <p className="text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">{activeStudy.description[lang]}</p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                 {activeStudy.results[lang].map((r, i) => (
                   <div key={i} className="glass p-6 rounded-2xl border-cyan-500/20">
-                    <p className="text-2xl font-black text-cyan-400 mb-1">{r.split(' ')[0]}</p>
+                    <p className="text-3xl font-black text-cyan-400 mb-1">{r.split(' ')[0]}</p>
                     <p className="text-[10px] uppercase font-bold text-slate-400 tracking-wider leading-tight">{r.split(' ').slice(1).join(' ')}</p>
                   </div>
                 ))}
@@ -490,7 +471,7 @@ const App: React.FC = () => {
                   }}
                   className="px-10 py-5 bg-cyan-500 text-slate-900 font-black rounded-full hover:bg-cyan-400 transition-all"
                 >
-                  Apply These Results to My Business
+                  Deploy These Results for My Business
                 </button>
                 <div className="flex space-x-2 rtl:space-x-reverse">
                   <button onClick={() => setCarouselIndex((carouselIndex - 1 + CASE_STUDIES.length) % CASE_STUDIES.length)} className="p-4 rounded-full border border-white/10 hover:bg-white/5 text-white"><ChevronLeft size={24} className="rtl:rotate-180"/></button>
@@ -509,9 +490,9 @@ const App: React.FC = () => {
       <Navbar currentPage={currentPage} setPage={setCurrentPage} lang={lang} toggleLang={toggleLang} />
       <main>{currentPage === 'portfolio' ? renderPortfolio() : renderHome()}</main>
       
-      {/* WhatsApp Floating Button */}
+      {/* WhatsApp Regional Connector */}
       <a 
-        href={`https://wa.me/97451182644?text=${encodeURIComponent(lang === 'en' ? 'Hello Ansury Systems, I would like to learn more about your autonomous growth infrastructure.' : 'مرحباً أنسوري للأنظمة، أود معرفة المزيد عن بنيتك التحتية للنمو الذاتي.')}`}
+        href={`https://wa.me/97451182644?text=${encodeURIComponent(lang === 'en' ? 'Hello Ansury Systems, I would like to discuss a regional growth infrastructure for my business.' : 'مرحباً أنسوري للأنظمة، أود مناقشة بنية تحتية للنمو الإقليمي لأعمالي.')}`}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-8 left-8 z-[100] group flex items-center"
@@ -538,7 +519,7 @@ const App: React.FC = () => {
                 </div>
               </div>
               <p className="text-slate-500 max-w-sm mb-8 leading-relaxed">
-                {lang === 'en' ? 'Scaling Qatari businesses with autonomous landing pages and lead qualification engines.' : 'توسيع نطاق الأعمال القطرية من خلال صفحات هبوط ذاتية ومحركات تأهيل العملاء.'}
+                {lang === 'en' ? 'The Middle East\'s dominant force in autonomous growth infrastructure. Scaling Khaleeji businesses through AI synchronization.' : 'القوة المهيمنة في الشرق الأوسط في البنية التحتية للنمو الذاتي. توسيع نطاق الشركات الخليجية من خلال مزامنة الذكاء الاصطناعي.'}
               </p>
               <div className="flex space-x-4 rtl:space-x-reverse">
                 <a href="https://linkedin.com/company/ansury-systems" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-900 rounded-xl text-slate-500 hover:text-cyan-400 border border-white/5 transition-all">
@@ -550,7 +531,7 @@ const App: React.FC = () => {
               </div>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Direct Access</h4>
+              <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Regional Access</h4>
               <ul className="space-y-4 text-slate-400 text-sm">
                 <li onClick={() => setCurrentPage('home')} className="hover:text-cyan-400 cursor-pointer transition-colors">{t.footerHome}</li>
                 <li onClick={() => setCurrentPage('portfolio')} className="hover:text-cyan-400 cursor-pointer transition-colors">{t.footerSuccess}</li>
@@ -559,13 +540,13 @@ const App: React.FC = () => {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Contact Headquarters</h4>
-              <p className="text-slate-400 text-sm mb-2">+974 51182644</p>
+              <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Headquarters</h4>
+              <p className="text-slate-400 text-sm mb-2">Riyadh • Dubai • Doha</p>
               <p className="text-slate-400 text-sm">hello@ansurysystem.online</p>
             </div>
           </div>
           <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-slate-600 font-bold uppercase tracking-widest">
-            <p>© 2024 Ansury Systems LLC. Registered in Qatar.</p>
+            <p>© 2024 Ansury Systems LLC. Registered across the GCC.</p>
           </div>
         </div>
       </footer>
