@@ -56,10 +56,14 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage, lang, toggleLang 
           {navItems.map((item) => (
             <button
               key={item.value}
-              onClick={() => setPage(item.value)}
-              className={`text-sm font-medium transition-colors hover:text-cyan-400 ${currentPage === item.value ? 'text-cyan-400' : 'text-slate-300'}`}
+              onClick={() => {
+                setPage(item.value);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className={`text-sm font-medium transition-all duration-300 hover:text-cyan-400 relative group ${currentPage === item.value ? 'text-cyan-400' : 'text-slate-300'}`}
             >
               {item.label}
+              <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300 ${currentPage === item.value ? 'w-full' : ''}`}></span>
             </button>
           ))}
           
@@ -72,8 +76,11 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage, lang, toggleLang 
           </button>
 
           <button 
-            onClick={() => setPage('contact')}
-            className="px-6 py-2.5 bg-white text-slate-900 font-bold rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105 active:scale-95 text-sm"
+            onClick={() => {
+              setPage('contact');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="px-6 py-2.5 bg-white text-slate-900 font-bold rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105 active:scale-95 text-sm shadow-lg hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]"
           >
             {labels.getStarted}
           </button>
@@ -97,8 +104,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage, lang, toggleLang 
               onClick={() => {
                 setPage(item.value);
                 setIsMobileMenuOpen(false);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className={`text-xl font-semibold text-left rtl:text-right ${currentPage === item.value ? 'text-cyan-400' : 'text-slate-300'}`}
+              className={`text-xl font-semibold text-left rtl:text-right transition-colors duration-300 ${currentPage === item.value ? 'text-cyan-400' : 'text-slate-300'}`}
             >
               {item.label}
             </button>
@@ -107,8 +115,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage, lang, toggleLang 
             onClick={() => {
               setPage('contact');
               setIsMobileMenuOpen(false);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="w-full py-4 bg-cyan-500 text-slate-900 font-bold rounded-xl"
+            className="w-full py-4 bg-cyan-500 text-slate-900 font-bold rounded-xl hover:bg-cyan-400 transition-all"
           >
             {labels.getStarted}
           </button>
