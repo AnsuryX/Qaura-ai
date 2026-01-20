@@ -123,7 +123,11 @@ const App: React.FC = () => {
     formTitle: lang === 'en' ? "Claim Your Custom ROI Blueprint" : "احصل على مخطط عائد الاستثمار المخصص لك",
     send: lang === 'en' ? "Get My Blueprint Now" : "احصل على مخططي الآن",
     
-    whatsappLabel: lang === 'en' ? "Speak to a Strategist" : "تحدث إلى استراتيجي"
+    whatsappLabel: lang === 'en' ? "Speak to a Strategist" : "تحدث إلى استراتيجي",
+    footerHome: lang === 'en' ? 'Home' : 'الرئيسية',
+    footerSuccess: lang === 'en' ? 'Success Stories' : 'قصص النجاح',
+    footerBlueprint: lang === 'en' ? 'Get My Blueprint' : 'احصل على مخططي',
+    footerCareers: lang === 'en' ? 'Careers' : 'الوظائف'
   };
 
   const renderHome = () => (
@@ -548,9 +552,10 @@ const App: React.FC = () => {
             <div>
               <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Direct Access</h4>
               <ul className="space-y-4 text-slate-400 text-sm">
-                <li onClick={() => setCurrentPage('home')} className="hover:text-cyan-400 cursor-pointer transition-colors">Home</li>
-                <li onClick={() => setCurrentPage('portfolio')} className="hover:text-cyan-400 cursor-pointer transition-colors">Success Stories</li>
-                <li onClick={() => setCurrentPage('contact')} className="hover:text-cyan-400 cursor-pointer transition-colors">Get My Blueprint</li>
+                <li onClick={() => setCurrentPage('home')} className="hover:text-cyan-400 cursor-pointer transition-colors">{t.footerHome}</li>
+                <li onClick={() => setCurrentPage('portfolio')} className="hover:text-cyan-400 cursor-pointer transition-colors">{t.footerSuccess}</li>
+                <li onClick={() => setCurrentPage('contact')} className="hover:text-cyan-400 cursor-pointer transition-colors">{t.footerBlueprint}</li>
+                <li className="hover:text-cyan-400 cursor-pointer transition-colors opacity-60 italic">{t.footerCareers}</li>
               </ul>
             </div>
             <div>
