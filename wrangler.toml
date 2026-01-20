@@ -1,27 +1,15 @@
 name = "ansury-systems"
-type = "javascript"
-main = "dist"
 compatibility_date = "2024-01-15"
 
 [env.production]
 name = "ansury-systems"
-routes = [{ pattern = "*ansurysystems.online/*", zone_id = "" }]
+
+[[env.production.vars]]
+GEMINI_API_KEY = "..."
 
 [build]
 command = "npm run build"
 cwd = "."
-watch_paths = ["src/**/*.ts", "src/**/*.tsx", "index.html"]
 
 [site]
 bucket = "./dist"
-
-[env.production.routes]
-routes = [
-  { pattern = "/api/genai", zone_id = "" }
-]
-
-[[env.production.env_vars]]
-GEMINI_API_KEY = ""
-
-[vars]
-VITE_API_URL = "/api"
