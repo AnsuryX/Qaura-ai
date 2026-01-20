@@ -18,6 +18,19 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
-      }
+      },
+      build: {
+        minify: 'esbuild',
+        sourcemap: false,
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              react: ['react', 'react-dom'],
+              lucide: ['lucide-react'],
+            },
+          },
+        },
+        chunkSizeWarningLimit: 1024,
+      },
     };
 });

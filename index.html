@@ -4,24 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ansury Systems - AI-powered marketing agency for Qatar's luxury market">
+    <meta name="theme-color" content="#020617">
     <title>Ansury Systems | High-Performance AI Marketing Qatar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&family=Noto+Sans+Arabic:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Preload critical fonts for better performance -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&family=Cairo:wght@300;400;600;700;900&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: #020617;
             color: #f8fafc;
             overflow-x: hidden;
         }
         [dir="rtl"] body {
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'Cairo', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            text-align: right;
         }
         h1, h2, h3, h4, .font-heading {
-            font-family: 'Sora', sans-serif;
+            font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
         }
-        [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4 {
-            font-family: 'Noto Sans Arabic', sans-serif;
+        [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] .font-heading {
+            font-family: 'Cairo', 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
         }
         .glass {
             background: rgba(15, 23, 42, 0.6);
