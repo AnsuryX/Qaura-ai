@@ -1,14 +1,14 @@
 import React from 'react';
 import { LayoutTemplate, BrainCircuit, Zap, LineChart } from 'lucide-react';
-import { Service, CaseStudy } from './types';
+import { Service, CaseStudy, Testimonial } from './types';
 
 export const SERVICES: Service[] = [
   {
     id: 'conversion-pages',
     title: { en: 'Khaleeji Conversion Architecture', ar: 'هندسة التحويل الخليجية' },
     description: { 
-      en: 'Standard websites fail in the GCC. We build high-status, lightning-fast landing pages optimized for the scroll-habits of the Middle East\'s high-net-worth audience.', 
-      ar: 'المواقع العادية تفشل في الخليج. نحن نبني صفحات هبوط فاخرة وسريعة للغاية، مصممة خصيصاً لعادات المشترين ذوي الملاءة المالية العالية.' 
+      en: 'Stop wasting traffic. We install high-status conversion architecture that turns the Khaleeji scroll into qualified intent. Proven to increase lead volume by 4.2x. Deploy your engine.', 
+      ar: 'توقف عن خسارة الزوار. نثبت بنية تحويل فاخرة تحول التصفح الخليجي إلى نية شراء مؤكدة. أثبتت كفاءتها بزيادة العملاء 4.2 ضعف. انشر محركك.' 
     },
     icon: 'LayoutTemplate'
   },
@@ -16,8 +16,8 @@ export const SERVICES: Service[] = [
     id: 'ai-qualification',
     title: { en: 'Autonomous HNW Qualification', ar: 'تأهيل تلقائي لكبار العملاء' },
     description: { 
-      en: 'Stop chasing tire-kickers. Our AI screens every lead for budget, authority, and intent across Riyadh, Dubai, and Doha before they touch your calendar.', 
-      ar: 'توقف عن ملاحقة غير الجادين. يقوم ذكاؤنا الاصطناعي بفحص كل عميل للميزانية والصلاحية والنية في الرياض ودبي والدوحة قبل أن يلمسوا جدولك.' 
+      en: 'Talk only to buyers. Our AI screens every regional prospect for budget and authority before they touch your calendar. Reclaims 25+ hours of sales time weekly. Filter your pipe.', 
+      ar: 'تحدث مع المشترين فقط. يقوم ذكاؤنا الاصطناعي بفحص كل عميل إقليمي للميزانية والصلاحية فوراً. استعد 25+ ساعة من وقت المبيعات أسبوعياً. ابدأ الفرز.' 
     },
     icon: 'BrainCircuit'
   },
@@ -25,8 +25,8 @@ export const SERVICES: Service[] = [
     id: 'follow-up-engine',
     title: { en: 'The 60-Second Closing Loop', ar: 'حلقة الإغلاق في 60 ثانية' },
     description: { 
-      en: 'In the Middle East, speed is status. Our infrastructure triggers personalized WhatsApp and Email follow-ups the second a lead qualifies.', 
-      ar: 'في الشرق الأوسط، السرعة تعني المكانة. تقوم بنيتنا التحتية ببدء متابعات مخصصة عبر واتساب والبريد الإلكتروني في اللحظة التي يتأهل فيها العميل.' 
+      en: 'Never lose a lead. We trigger personalized WhatsApp loops within 60 seconds of qualification to lock in prospects while they are hot. Achieve 88% higher conversions. Close faster.', 
+      ar: 'لا تفقد عميلاً أبداً. نفعل حلقات واتساب مخصصة خلال 60 ثانية من التأهيل لضمان الحجز فوراً. حقق تحويلات أعلى بنسبة 88%. أغلق الصفقات أسرع.' 
     },
     icon: 'Zap'
   },
@@ -34,8 +34,8 @@ export const SERVICES: Service[] = [
     id: 'growth-sync',
     title: { en: 'Regional Growth Synchronization', ar: 'مزامنة النمو الإقليمي' },
     description: { 
-      en: 'Unified revenue tracking across your GCC operations. We sync your automated funnels to real-time ROI dashboards for absolute profit clarity.', 
-      ar: 'تتبع موحد للإيرادات عبر عملياتك في دول الخليج. نربط أقماعك المؤتمتة بلوحات تحكم عائد الاستثمار في الوقت الفعلي.' 
+      en: 'Master your margins. We synchronize all regional funnel data into real-time ROI dashboards for absolute profit clarity. Get 100% visibility on scaling. Scale with data.', 
+      ar: 'تحكم في هوامش ربحك. نمزامن جميع بيانات الأقماع الإقليمية في لوحات تحكم فورية لوضوح مالي مطلق. احصل على رؤية 100% لتوسعك. توسع بالبيانات.' 
     },
     icon: 'LineChart'
   }
@@ -49,7 +49,7 @@ export const SERVICE_DETAILS = {
       en: [
         { name: 'Zero Friction UX', explanation: 'Eliminating the 3-second bounce that costs GCC businesses millions in lost ad spend.' },
         { name: 'Luxury Aesthetics', explanation: 'Visual language that commands respect from elite Qatari, Saudi, and Emirati clientele.' },
-        { name: 'Multi-Dialect Copy', explanation: 'Copy that resonates whether your audience is in Najd, the Levant, or the Coast.' }
+        { name: 'Multi-Dialect Copy', explanation: 'Copy that resonates whether your audience is in نجد, the Levant, or the Coast.' }
       ],
       ar: [
         { name: 'تجربة مستخدم بلا عوائق', explanation: 'القضاء على الارتداد الذي يكلف شركات الخليج الملايين من الإنفاق الإعلاني الضائع.' },
@@ -130,7 +130,6 @@ export const CASE_STUDIES: CaseStudy[] = [
     client: 'Apex Capital, Dubai',
     title: { en: 'Scale Without Headcount: 310% Growth', ar: 'التوسع بدون زيادة موظفين: نمو بنسبة 310%' },
     category: { en: 'Fintech / Wealth Management', ar: 'تكنولوجيا مالية / إدارة ثروات' },
-    // Merged duplicate description property
     description: { 
       en: 'Automated the entire lead-to-meeting pipeline for a HNW investment firm in DIFC, replacing manual vetting with an AI that verifies investor status instantly.', 
       ar: 'أتمتة كامل قمع تحويل العملاء إلى اجتماعات لشركة استثمار كبرى في مركز دبي المالي العالمي، واستبدال الفحص اليدوي بذكاء اصطناعي يتحقق من وضع المستثمر فوراً.' 
@@ -173,5 +172,48 @@ export const CASE_STUDIES: CaseStudy[] = [
     },
     image: 'https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1200',
     tags: ['Qatar', 'Real Estate', 'Full Engine']
+  }
+];
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: 'test-1',
+    name: 'Faisal Al-Saud',
+    company: 'Al-Majd Estates, Riyadh',
+    quote: { 
+      en: "Ansury didn't just give us a website; they gave us a 24/7 sales force that understands the high-status expectations of our Saudi clientele.",
+      ar: "أنسوري لم تمنحنا مجرد موقع إلكتروني؛ لقد منحونا قوة مبيعات تعمل على مدار الساعة وتفهم التوقعات الراقية لعملائنا في السعودية."
+    },
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150'
+  },
+  {
+    id: 'test-2',
+    name: 'Sarah Bin Rashid',
+    company: 'Apex Capital, Dubai',
+    quote: { 
+      en: "The lead quality improved by 300% in the first month. Our sales team is now only talking to serious investors, reclaiming hours of productive time.",
+      ar: "تحسنت جودة العملاء المحتملين بنسبة 300% في الشهر الأول. يتحدث فريق مبيعاتنا الآن فقط مع المستثمرين الجادين، مما وفر ساعات من الوقت المنتج."
+    },
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150'
+  },
+  {
+    id: 'test-3',
+    name: 'Yousuf Al-Mulla',
+    company: 'Royal Health, Kuwait City',
+    quote: { 
+      en: "Speed is status in the Khaleej. Ansury's 60-second response infrastructure ensured we never lost a high-value inquiry to a competitor.",
+      ar: "السرعة هي المكانة في الخليج. ضمنت البنية التحتية للاستجابة في 60 ثانية من أنسوري أننا لم نفقد أي استفسار عالي القيمة لمنافس."
+    },
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150'
+  },
+  {
+    id: 'test-4',
+    name: 'Jassim Al-Thani',
+    company: 'Lusail Prime, Doha',
+    quote: { 
+      en: "The ROI was clear from day 14. Their autonomous growth engine is truly synchronized with the fast-paced Qatar market.",
+      ar: "كان عائد الاستثمار واضحاً من اليوم الرابع عشر. محرك النمو الذاتي الخاص بهم متزامن حقاً مع السوق القطري سريع الوتيرة."
+    },
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150'
   }
 ];

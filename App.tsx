@@ -25,19 +25,21 @@ import {
   BrainCircuit,
   Zap,
   LineChart,
-  Globe
+  Globe,
+  Quote
 } from 'lucide-react';
 import Navbar from './components/Navbar';
 import StrategyGenerator from './components/StrategyGenerator';
 import Chatbot from './components/Chatbot';
 import { Page, Language } from './types';
-import { SERVICES, CASE_STUDIES, SERVICE_DETAILS } from './constants';
+import { SERVICES, CASE_STUDIES, SERVICE_DETAILS, TESTIMONIALS } from './constants';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [lang, setLang] = useState<Language>('en');
   const [activeService, setActiveService] = useState<string>(SERVICES[0].id);
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
 
   // Form State
   const [contactForm, setContactForm] = useState({ name: '', company: '', email: '', budget: '10,000 - 50,000', message: '' });
@@ -58,6 +60,13 @@ const App: React.FC = () => {
       return () => clearInterval(timer);
     }
   }, [currentPage]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTestimonialIndex(prev => (prev + 1) % TESTIMONIALS.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   const toggleLang = () => setLang(prev => prev === 'en' ? 'ar' : 'en');
 
@@ -116,6 +125,9 @@ const App: React.FC = () => {
     
     caseStudiesTitle: lang === 'en' ? "Regional Results That Speak for Themselves." : "نتائج إقليمية تتحدث عن نفسها.",
     caseStudiesDesc: lang === 'en' ? "See how we've turned manual GCC businesses into 24/7 autonomous lead machines." : "تعرف على كيفية تحويلنا للأعمال اليدوية في الخليج إلى آلات عملاء ذاتية تعمل 24/7.",
+
+    testimonialTitle: lang === 'en' ? "Voices of Growth Across the Khaleej" : "أصوات النمو في جميع أنحاء الخليج",
+    testimonialDesc: lang === 'en' ? "Hear from the CEOs and founders who have deployed our autonomous growth infrastructure." : "استمع إلى الرؤساء التنفيذيين والمؤسسين الذين نشروا بنيتنا التحتية للنمو الذاتي.",
 
     contactTitle: lang === 'en' ? "Ready to Scale Across the Khaleej?" : "جاهز للتوسع عبر الخليج؟",
     contactDesc: lang === 'en' ? "Schedule a consultation to see how our infrastructure can buy back 25+ hours of your sales leadership's week." : "حدد موعدًا لاستشارة لتعرف كيف يمكن لبنيتنا التحتية استعادة أكثر من 25 ساعة من أسبوع قيادة المبيعات.",
@@ -196,7 +208,7 @@ const App: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="p-6 glass rounded-2xl border-white/5">
                   <ShieldCheck size={28} className="text-cyan-400 mb-4" />
-                  <h4 className="text-lg font-bold text-white mb-2">Infrastructure &gt; Tools</h4>
+                  <h4 className="text-lg font-bold text-white mb-2">Infrastructure > Tools</h4>
                   <p className="text-slate-500 text-sm">Tools need managers. Infrastructure builds your empire autonomously.</p>
                 </div>
                 <div className="p-6 glass rounded-2xl border-white/5">
@@ -325,6 +337,69 @@ const App: React.FC = () => {
 
       <StrategyGenerator />
 
+      {/* TESTIMONIALS CAROUSEL */}
+      <section className="py-24 bg-slate-950 overflow-hidden relative">
+        <div className="absolute top-1/2 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2"></div>
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <h2 className="text-4xl md:text-6xl font-black mb-6">{t.testimonialTitle}</h2>
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-16">{t.testimonialDesc}</p>
+
+          <div className="max-w-4xl mx-auto relative px-4">
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-700 ease-in-out" 
+                style={{ transform: `translateX(-${testimonialIndex * 100}%)` }}
+              >
+                {TESTIMONIALS.map((testimonial) => (
+                  <div key={testimonial.id} className="w-full flex-shrink-0">
+                    <div className="glass p-10 md:p-16 rounded-[3rem] border-white/5 relative">
+                      <Quote className="absolute top-8 left-8 text-cyan-500/20 rtl:left-auto rtl:right-8" size={64} />
+                      <p className="text-xl md:text-2xl italic text-slate-200 leading-relaxed mb-10 relative z-10">
+                        "{testimonial.quote[lang]}"
+                      </p>
+                      <div className="flex flex-col items-center">
+                        <img 
+                          src={testimonial.avatar} 
+                          alt={testimonial.name} 
+                          className="w-16 h-16 rounded-full border-2 border-cyan-500 p-0.5 mb-4 shadow-[0_0_15px_rgba(34,211,238,0.3)]" 
+                        />
+                        <h4 className="text-lg font-black text-white">{testimonial.name}</h4>
+                        <p className="text-xs font-bold text-cyan-400 uppercase tracking-widest">{testimonial.company}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Carousel Controls */}
+            <div className="flex justify-center space-x-3 rtl:space-x-reverse mt-10">
+              {TESTIMONIALS.map((_, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setTestimonialIndex(idx)}
+                  className={`h-2 rounded-full transition-all duration-300 ${testimonialIndex === idx ? 'w-8 bg-cyan-500' : 'w-2 bg-slate-700'}`}
+                  aria-label={`Go to testimonial ${idx + 1}`}
+                />
+              ))}
+            </div>
+            
+            <button 
+              onClick={() => setTestimonialIndex((testimonialIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full hidden md:flex p-4 text-slate-500 hover:text-cyan-400 transition-colors"
+            >
+              <ChevronLeft size={32} />
+            </button>
+            <button 
+              onClick={() => setTestimonialIndex((testimonialIndex + 1) % TESTIMONIALS.length)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full hidden md:flex p-4 text-slate-500 hover:text-cyan-400 transition-colors"
+            >
+              <ChevronRight size={32} />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* EXPANDED PORTFOLIO PREVIEW */}
       <section className="py-24">
         <div className="container mx-auto px-6 text-center">
@@ -430,154 +505,6 @@ const App: React.FC = () => {
     </>
   );
 
-  const renderServices = () => {
-    return (
-      <div className="pt-24 pb-20">
-        <div className="container mx-auto px-6 mb-24">
-          <div className="max-w-3xl mb-16">
-            <h1 className="text-5xl md:text-7xl font-black mb-6">{t.servicesTitle}</h1>
-            <p className="text-xl text-slate-400">{t.servicesDesc}</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div className="lg:col-span-5 space-y-3">
-              {SERVICES.map((s) => (
-                <div 
-                  key={s.id}
-                  onMouseEnter={() => setActiveService(s.id)}
-                  onClick={() => setActiveService(s.id)}
-                  className={`p-6 rounded-2xl cursor-pointer transition-all border ${activeService === s.id ? 'glass border-cyan-500/50 scale-[1.02] opacity-100 shadow-[0_0_20px_rgba(34,211,238,0.1)]' : 'border-transparent opacity-40 grayscale hover:opacity-60'}`}
-                >
-                  <div className="flex items-center space-x-6 rtl:space-x-reverse">
-                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${activeService === s.id ? 'bg-cyan-500' : 'bg-slate-800'}`}>
-                      {getIcon(s.icon, 24, activeService === s.id)}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-black">{s.title[lang]}</h3>
-                      <p className="text-sm text-slate-400 line-clamp-2">{s.description[lang]}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="lg:col-span-7">
-              <div className="glass rounded-[3rem] p-12 border-cyan-500/20 min-h-[500px] flex flex-col justify-center relative overflow-hidden">
-                <div className="relative z-10 animate-in fade-in slide-in-from-right-10 duration-500">
-                  <h2 className="text-4xl font-black mb-4 text-white">{SERVICES.find(s => s.id === activeService)?.title[lang]}</h2>
-                  <p className="text-lg text-slate-300 mb-10 leading-relaxed max-w-xl">
-                    {SERVICES.find(s => s.id === activeService)?.description[lang]}
-                  </p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                    <div>
-                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Market Impact</h4>
-                      <p className="text-lg font-semibold text-cyan-400 leading-relaxed">
-                        {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].roi[lang]}
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Global Tech Stack</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].tools.map((t, idx) => (
-                          <span key={idx} className="px-3 py-1 bg-slate-900 rounded-lg text-xs font-bold text-slate-300 border border-white/5">{t}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].features[lang].map((f, idx) => (
-                      <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-white/5 flex items-center space-x-3 rtl:space-x-reverse">
-                        <CheckCircle2 size={16} className="text-cyan-500 shrink-0" />
-                        <span className="text-xs font-medium text-slate-300">{f.name}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-12 flex justify-end">
-                    <button 
-                      onClick={() => setCurrentPage('contact')}
-                      className="px-8 py-4 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 transition-all flex items-center group"
-                    >
-                      Deploy Infrastructure <ArrowUpRight className="ml-2 rtl:mr-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={18} />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const renderContact = () => {
-    return (
-      <div className="pt-24 pb-20">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-            <div>
-              <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight">{t.contactTitle}</h1>
-              <p className="text-xl text-slate-400 mb-12">{t.contactDesc}</p>
-              
-              <div className="space-y-8">
-                <div className="flex items-start">
-                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Mail className="text-cyan-400" /></div>
-                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Regional Liaison</h3><p className="text-xl font-bold">hello@ansurysystem.online</p></div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Phone className="text-cyan-400" /></div>
-                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Command Center</h3><p className="text-xl font-bold">+974 51182644</p></div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Globe className="text-cyan-400" /></div>
-                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Operational Bases</h3><p className="text-xl font-bold leading-tight">Riyadh • Dubai • Doha • Kuwait City</p></div>
-                </div>
-              </div>
-            </div>
-
-            <div className="glass p-8 md:p-12 rounded-[2.5rem] border-white/10 relative">
-              <h3 className="text-2xl font-black mb-8">{t.formTitle}</h3>
-              {submitStatus === 'success' ? (
-                <div className="text-center py-20 animate-in zoom-in duration-300">
-                  <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6"><CheckCircle2 size={40} /></div>
-                  <h4 className="text-3xl font-black mb-4">Blueprint Protocol Initiated</h4>
-                  <p className="text-slate-400">A senior regional strategist will contact you within 4 hours.</p>
-                  <button onClick={() => setSubmitStatus('idle')} className="mt-8 text-cyan-400 font-bold hover:underline">Reset</button>
-                </div>
-              ) : (
-                <form onSubmit={handleContactSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Full Name</label>
-                      <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.name} onChange={(e) => setContactForm({...contactForm, name: e.target.value})} />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Regional Company</label>
-                      <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.company} onChange={(e) => setContactForm({...contactForm, company: e.target.value})} />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Business Email</label>
-                    <input required type="email" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.email} onChange={(e) => setContactForm({...contactForm, email: e.target.value})} />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Regional Growth Bottleneck</label>
-                    <textarea required rows={4} className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none resize-none" value={contactForm.message} onChange={(e) => setContactForm({...contactForm, message: e.target.value})}></textarea>
-                  </div>
-                  <button disabled={isSubmitting} className="w-full py-5 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 flex items-center justify-center space-x-2 transition-all">
-                    {isSubmitting ? <Loader2 className="animate-spin" /> : t.send}
-                  </button>
-                </form>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   const renderPortfolio = () => {
     const activeStudy = CASE_STUDIES[carouselIndex];
     return (
@@ -636,12 +563,7 @@ const App: React.FC = () => {
   return (
     <div className={`min-h-screen ${lang === 'ar' ? 'font-arabic' : ''}`}>
       <Navbar currentPage={currentPage} setPage={setCurrentPage} lang={lang} toggleLang={toggleLang} />
-      <main>
-        {currentPage === 'home' && renderHome()}
-        {currentPage === 'portfolio' && renderPortfolio()}
-        {currentPage === 'services' && renderServices()}
-        {currentPage === 'contact' && renderContact()}
-      </main>
+      <main>{currentPage === 'portfolio' ? renderPortfolio() : renderHome()}</main>
       
       {/* WhatsApp Regional Connector */}
       <a 

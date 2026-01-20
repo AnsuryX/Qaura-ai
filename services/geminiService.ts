@@ -26,11 +26,13 @@ export const generateMarketingStrategy = async (industry: string, targetAudience
       contents: prompt,
       config: {
         temperature: 0.7,
+        // When setting maxOutputTokens for Gemini 3, thinkingBudget should also be considered
         maxOutputTokens: 1000,
         thinkingConfig: { thinkingBudget: 500 },
       }
     });
 
+    // Use .text property directly
     return response.text;
   } catch (error) {
     console.error("Error generating strategy:", error);
@@ -40,8 +42,10 @@ export const generateMarketingStrategy = async (industry: string, targetAudience
 
 export const chatWithAura = async (history: { role: 'user' | 'model', parts: { text: string }[] }[], message: string) => {
   const ai = getAIClient();
+  // Pass history to the chat session
   const chat: Chat = ai.chats.create({
     model: 'gemini-3-flash-preview',
+    // We can initialize the chat session with history if needed
     config: {
       systemInstruction: `You are "Ansur", the Chief Automation Strategist for Ansury Systems. You represent the premier agency for autonomous growth in the Khaleej (GCC) and the wider Middle East.
       
@@ -69,6 +73,7 @@ export const chatWithAura = async (history: { role: 'user' | 'model', parts: { t
 
   try {
     const response: GenerateContentResponse = await chat.sendMessage({ message });
+    // Use .text property directly
     return response.text;
   } catch (error) {
     console.error("Chat error:", error);

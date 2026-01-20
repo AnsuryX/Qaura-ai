@@ -17,5 +17,13 @@ export interface CaseStudy {
   tags: string[];
 }
 
+export interface Testimonial {
+  id: string;
+  name: string;
+  company: string;
+  quote: { en: string; ar: string };
+  avatar: string;
+}
+
 export type Page = 'home' | 'portfolio' | 'services' | 'contact';
 export type Language = 'en' | 'ar';
