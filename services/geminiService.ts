@@ -32,6 +32,8 @@ export const generateMarketingStrategy = async (industry: string, targetAudience
     });
 
     return response.text;
+  } catch (error) {
+    console.error("Error generating strategy:", error);
     return "Protocol interrupted. Please contact our regional headquarters directly for your blueprint.";
   }
 };
@@ -68,6 +70,8 @@ export const chatWithAura = async (history: { role: 'user' | 'model', parts: { t
   try {
     const response: GenerateContentResponse = await chat.sendMessage({ message });
     return response.text;
+  } catch (error) {
+    console.error("Chat error:", error);
     return "Neural link interrupted. Reach us at hello@ansurysystem.online.";
   }
 };

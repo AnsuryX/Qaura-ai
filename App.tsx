@@ -196,7 +196,7 @@ const App: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="p-6 glass rounded-2xl border-white/5">
                   <ShieldCheck size={28} className="text-cyan-400 mb-4" />
-                  <h4 className="text-lg font-bold text-white mb-2">Infrastructure > Tools</h4>
+                  <h4 className="text-lg font-bold text-white mb-2">Infrastructure &gt; Tools</h4>
                   <p className="text-slate-500 text-sm">Tools need managers. Infrastructure builds your empire autonomously.</p>
                 </div>
                 <div className="p-6 glass rounded-2xl border-white/5">
