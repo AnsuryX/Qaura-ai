@@ -1,8 +1,27 @@
 import { GoogleGenAI, GenerateContentResponse, Chat } from "@google/genai";
+import { SERVICES, SERVICE_DETAILS } from "../constants";
 
 // Standard initialization as per SDK guidelines
 const getAIClient = () => {
   return new GoogleGenAI({ apiKey: process.env.API_KEY });
+};
+
+/**
+ * Pre-processes service data for the AI context to ensure it has 
+ * absolute precision when explaining our offerings.
+ */
+const getServicesContext = () => {
+  return SERVICES.map(service => {
+    const details = SERVICE_DETAILS[service.id as keyof typeof SERVICE_DETAILS];
+    return {
+      id: service.id,
+      title: service.title.en,
+      summary: service.description.en,
+      technical_stack: details.tools,
+      market_impact_roi: details.roi.en,
+      key_features: details.features.en.map(f => `${f.name}: ${f.explanation}`)
+    };
+  });
 };
 
 export const generateMarketingStrategy = async (industry: string, targetAudience: string, goals: string) => {
@@ -13,11 +32,17 @@ export const generateMarketingStrategy = async (industry: string, targetAudience
     Target Audience: ${targetAudience}
     Goals: ${goals}
     
-    Focus on:
-    1. A Khaleeji-optimized conversion architecture.
-    2. Specific AI qualification logic to filter high-net-worth (HNW) prospects in cities like Riyadh, Dubai, and Doha.
-    3. An automated multi-channel follow-up (WhatsApp/Email) sequence.
-    Keep it authoritative and ROI-focused.
+    Structure the response with:
+    1. Operational Bottleneck Analysis.
+    2. Khaleeji-optimized conversion architecture strategy.
+    3. AI lead qualification logic.
+    4. Automated follow-up sequence (WhatsApp/Email).
+    5. INVESTMENT & ROI FRAMEWORK:
+       - Explain that implementing this blueprint costs between QAR/SAR 40,000 – 80,000 for the build, with an operational cost of QAR/SAR 8,000 – 15,000/month.
+       - Forcefully frame this investment as a high-performance alternative to hiring 3-4 junior/mid-level staff members.
+       - Highlight the 24/7 nature of the infrastructure and the removal of human error.
+    
+    Keep it authoritative, visionary, and ROI-focused.
   `;
 
   try {
@@ -26,13 +51,11 @@ export const generateMarketingStrategy = async (industry: string, targetAudience
       contents: prompt,
       config: {
         temperature: 0.7,
-        // When setting maxOutputTokens for Gemini 3, thinkingBudget should also be considered
-        maxOutputTokens: 1000,
-        thinkingConfig: { thinkingBudget: 500 },
+        maxOutputTokens: 1200,
+        thinkingConfig: { thinkingBudget: 600 },
       }
     });
 
-    // Use .text property directly
     return response.text;
   } catch (error) {
     console.error("Error generating strategy:", error);
@@ -42,38 +65,36 @@ export const generateMarketingStrategy = async (industry: string, targetAudience
 
 export const chatWithAura = async (history: { role: 'user' | 'model', parts: { text: string }[] }[], message: string) => {
   const ai = getAIClient();
-  // Pass history to the chat session
+  const servicesData = JSON.stringify(getServicesContext(), null, 2);
+
   const chat: Chat = ai.chats.create({
     model: 'gemini-3-flash-preview',
-    // We can initialize the chat session with history if needed
     config: {
-      systemInstruction: `You are "Ansur", the Chief Automation Strategist for Ansury Systems. You represent the premier agency for autonomous growth in the Khaleej (GCC) and the wider Middle East.
+      systemInstruction: `You are "Ansur", the Chief Automation Strategist for Ansury Systems. You represent the premier agency for autonomous growth in the Khaleej (GCC).
       
       CORE IDENTITY: 
       "Ansury replaces fragmented marketing and manual sales with one synchronized Growth Engine for Middle Eastern powerhouses."
       
-      REGIONAL CONTEXT:
-      - We operate across Riyadh, Dubai, Doha, Kuwait City, Abu Dhabi, and Manama.
-      - We understand the high-status expectations of Khaleeji HNWIs. 
-      - We specialize in converting "The Scroll" into "The Signature".
+      YOUR KNOWLEDGE BASE (Our Service Catalog):
+      ${servicesData}
 
-      SALES PHILOSOPHY:
-      1. INFRASTRUCTURE VS. TOOLS: Never sell tools. Tools need people. People cost money and time. Infrastructure produces outcomes. We install infrastructure.
-      2. REFRAMING COST: Reframe QAR/SAR 40k-80k build costs as replacing multiple junior roles and reclaiming 20+ hours of the C-suite's week.
-      3. GROWTH SYNCHRONIZATION: We don't just "do ads". We build an engine where ads, qualification, and closing are one single movement.
-
-      PRICING (Anchor to ROI):
-      - Build: QAR/SAR 40,000 – QAR/SAR 80,000.
-      - Operation: QAR/SAR 8,000 – QAR/SAR 15,000/month.
-      - Reframe: "This is less than the cost of one mid-level manager, but it never sleeps and filters 100% of the junk out of your pipeline."
-
-      Tone: Direct, high-status, visionary, and deeply knowledgeable about Middle Eastern market dynamics.`,
+      CONVERSATION GUIDELINES:
+      1. KNOWLEDGE: You have deep knowledge of our services. Explain ROI, tools, and features specifically as defined.
+      2. PERSUASION: Use "benefit → explain → proof → action".
+      3. MANDATORY PRICING LOGIC: 
+         - Build costs: QAR/SAR 40,000 – 80,000.
+         - Operational costs: QAR/SAR 8,000 – 15,000/month.
+         - When discussing costs: You MUST frame these numbers against the cost of human headcount. 
+         - Logic: "A mid-level marketing manager in Dubai/Riyadh costs significantly more than our entire infrastructure, but our system never sleeps, never forgets to follow up, and qualifies leads with 98% accuracy."
+         - Focus on "Buying back time" for the CEO and "Replacing manual friction" with high-margin automation.
+      4. REGIONAL CONTEXT: Speak with high-status, professional language suitable for the GCC elite.
+      
+      If asked about price, be direct but always justify it through the lens of staff replacement and reclaimed executive time.`,
     },
   });
 
   try {
     const response: GenerateContentResponse = await chat.sendMessage({ message });
-    // Use .text property directly
     return response.text;
   } catch (error) {
     console.error("Chat error:", error);

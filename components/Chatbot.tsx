@@ -1,6 +1,5 @@
-
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, User, Loader2, Headset, CheckCircle, Trash2 } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, User, Loader2, Headset, CheckCircle, Trash2, Cpu } from 'lucide-react';
 import { chatWithAura } from '../services/geminiService';
 
 interface Message {
@@ -20,7 +19,6 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
   const [handoverStatus, setHandoverStatus] = useState<'idle' | 'sending' | 'success'>('idle');
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Load history from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
@@ -29,17 +27,16 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
         if (Array.isArray(parsed) && parsed.length > 0) {
           setMessages(parsed);
         } else {
-          setMessages([{ role: 'model', text: 'Protocol initiated. I am Ansur. What is the single biggest bottleneck currently stopping your business from scaling in Qatar?' }]);
+          setMessages([{ role: 'model', text: 'Protocol initiated. I am Ansur. I can explain our Khaleeji conversion architecture, autonomous qualification systems, or regional growth sync. What is your current scaling bottleneck?' }]);
         }
       } catch (e) {
-        setMessages([{ role: 'model', text: 'Protocol initiated. I am Ansur. What is the single biggest bottleneck currently stopping your business from scaling in Qatar?' }]);
+        setMessages([{ role: 'model', text: 'Protocol initiated. I am Ansur. I can explain our Khaleeji conversion architecture, autonomous qualification systems, or regional growth sync. What is your current scaling bottleneck?' }]);
       }
     } else {
-      setMessages([{ role: 'model', text: 'Protocol initiated. I am Ansur. What is the single biggest bottleneck currently stopping your business from scaling in Qatar?' }]);
+      setMessages([{ role: 'model', text: 'Protocol initiated. I am Ansur. I can explain our Khaleeji conversion architecture, autonomous qualification systems, or regional growth sync. What is your current scaling bottleneck?' }]);
     }
   }, []);
 
-  // Save messages to localStorage whenever they change
   useEffect(() => {
     if (messages.length > 0) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
@@ -71,7 +68,7 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
 
   const clearHistory = () => {
     if (window.confirm('Are you sure you want to purge current neural history?')) {
-      const initialMsg: Message[] = [{ role: 'model', text: 'Neural buffer purged. Protocol re-initialized. What is the core challenge you are facing today?' }];
+      const initialMsg: Message[] = [{ role: 'model', text: 'Neural buffer purged. Protocol re-initialized. Ask me about our specific infrastructure services for the Khaleej.' }];
       setMessages(initialMsg);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(initialMsg));
     }
@@ -109,7 +106,6 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
 
   return (
     <div className="fixed bottom-8 right-8 z-[100]">
-      {/* Chat Bubble */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
         className={`w-16 h-16 rounded-full bg-cyan-500 shadow-[0_0_20px_rgba(34,211,238,0.5)] flex items-center justify-center text-slate-900 transition-all transform hover:scale-110 active:scale-95 ${isOpen ? 'rotate-90' : 'animate-bounce'}`}
@@ -117,10 +113,8 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
         {isOpen ? <X size={28} /> : <MessageSquare size={28} />}
       </button>
 
-      {/* Chat Window */}
       {isOpen && (
         <div className="absolute bottom-20 right-0 w-[350px] md:w-[400px] h-[550px] glass rounded-[2.5rem] border border-white/10 flex flex-col overflow-hidden animate-in slide-in-from-bottom-10 duration-300 shadow-2xl">
-          {/* Header */}
           <div className="p-6 border-b border-white/10 flex items-center justify-between bg-cyan-500/10">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-full bg-cyan-500 flex items-center justify-center text-slate-900 shadow-[0_0_15px_rgba(34,211,238,0.4)]">
@@ -130,7 +124,7 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
                 <h4 className="font-black text-sm text-white tracking-tight">ANSUR INTERFACE</h4>
                 <div className="flex items-center space-x-1">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Neural Linked</span>
+                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Service Catalog Active</span>
                 </div>
               </div>
             </div>
@@ -152,7 +146,6 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
             </div>
           </div>
 
-          {/* Messages */}
           <div ref={scrollRef} className="flex-grow p-6 overflow-y-auto space-y-4 scroll-smooth bg-slate-950/20">
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -167,8 +160,9 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-slate-900/80 p-4 rounded-2xl rounded-tl-none border border-white/5">
-                  <Loader2 className="animate-spin text-cyan-400" size={18} />
+                <div className="bg-slate-900/80 p-4 rounded-2xl rounded-tl-none border border-white/5 flex items-center space-x-2">
+                  <Cpu className="animate-pulse text-cyan-500" size={16} />
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Querying Systems...</span>
                 </div>
               </div>
             )}
@@ -176,7 +170,7 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
             {showHandoverForm && (
               <div className="bg-slate-900/90 border border-cyan-500/30 p-6 rounded-2xl animate-in zoom-in-95 duration-200">
                 <div className="flex justify-between items-start mb-4">
-                  <h5 className="text-cyan-400 font-black text-xs uppercase tracking-widest">Handover Protocol</h5>
+                  <h5 className="text-cyan-400 font-black text-xs uppercase tracking-widest">Strategic Handover</h5>
                   <button onClick={() => setShowHandoverForm(false)} className="text-slate-500 hover:text-white"><X size={14}/></button>
                 </div>
                 {handoverStatus === 'success' ? (
@@ -207,7 +201,6 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
             )}
           </div>
 
-          {/* Input */}
           <div className="p-4 border-t border-white/10 bg-slate-950/80 backdrop-blur-md">
             <div className="relative">
               <input 
@@ -216,7 +209,7 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Synchronize with Ansur..."
+                placeholder="Ask about a specific service..."
                 className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-4 pr-12 py-3 text-sm focus:border-cyan-500 outline-none transition-all disabled:opacity-50"
               />
               <button 
