@@ -2,10 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { 
   ArrowRight, 
-  Play, 
   CheckCircle2,
   Mail,
-  MapPin,
   Phone,
   ArrowUpRight,
   ChevronLeft,
@@ -13,20 +11,19 @@ import {
   Sparkles,
   Loader2,
   Orbit,
-  Info,
   Linkedin,
   Twitter,
   MessageCircle,
-  Users,
   ShieldCheck,
   TrendingUp,
-  Clock,
   LayoutTemplate,
   BrainCircuit,
   Zap,
   LineChart,
   Globe,
-  Quote
+  Quote,
+  Target,
+  BarChart3
 } from 'lucide-react';
 import Navbar from './components/Navbar';
 import StrategyGenerator from './components/StrategyGenerator';
@@ -118,6 +115,18 @@ const App: React.FC = () => {
     infraTitle: lang === 'en' ? "We Don't Install Tools. We Install Outcomes." : "نحن لا نثبت أدوات. نحن نثبت نتائج.",
     infraDesc: lang === 'en' ? "Most Middle Eastern companies hire more people to manage growth. We automate the engine so your people can focus on closing high-ticket deals." : "معظم الشركات في الشرق الأوسط توظف المزيد من الأشخاص لإدارة النمو. نحن نؤتمت المحرك ليتفرغ موظفوك لإغلاق الصفقات الكبرى.",
     
+    whyTitle: lang === 'en' ? "Why Ansury Systems?" : "لماذا أنسوري للأنظمة؟",
+    whyDesc: lang === 'en' ? "The difference between guessing and growing is infrastructure." : "الفرق بين التخمين والنمو هو البنية التحتية.",
+    
+    usp1Title: lang === 'en' ? "AI-Driven Infrastructure" : "بنية تحتية مدفوعة بالذكاء الاصطناعي",
+    usp1Desc: lang === 'en' ? "We build custom neural engines that replace manual outreach with autonomous qualification loops." : "نحن نبني محركات عصبية مخصصة تحل محل التواصل اليدوي بحلقات تأهيل ذاتية.",
+    
+    usp2Title: lang === 'en' ? "Khaleeji Market IQ" : "ذكاء السوق الخليجي",
+    usp2Desc: lang === 'en' ? "Deep understanding of high-status cultural nuances in Riyadh, Dubai, and Doha for maximum trust." : "فهم عميق للفوارق الثقافية المرموقة في الرياض ودبي والدوحة لضمان أقصى قدر من الثقة.",
+    
+    usp3Title: lang === 'en' ? "ROI-Obsessed Strategy" : "استراتيجية مهووسة بعائد الاستثمار",
+    usp3Desc: lang === 'en' ? "Every riyal spent is tracked directly to a qualified meeting. 100% transparent growth synchronization." : "يتم تتبع كل ريال يتم إنفاقه مباشرة إلى اجتماع مؤهل. مزامنة نمو شفافة بنسبة 100%.",
+
     benefitsHeading: lang === 'en' ? "Your Sales Team Talks Only to Qualified Buyers — Never Tire-Kickers." : "فريق مبيعاتك يتحدث فقط مع المشترين الجادين - لا تضيع وقتك مع الفضوليين.",
     benefitsSub: lang === 'en' ? "Our synchronized Growth Engine replaces fragmented marketing with one high-performance system for the Khaleej." : "محرك النمو المتزامن لدينا يستبدل التسويق المجزأ بنظام واحد عالي الأداء لمنطقة الخليج.",
     
@@ -143,7 +152,7 @@ const App: React.FC = () => {
   };
 
   const renderHome = () => (
-    <>
+    <main>
       {/* HERO SECTION */}
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute top-0 -left-4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -208,7 +217,7 @@ const App: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="p-6 glass rounded-2xl border-white/5">
                   <ShieldCheck size={28} className="text-cyan-400 mb-4" />
-                  <h4 className="text-lg font-bold text-white mb-2">Infrastructure &gt; Tools</h4>
+                  <h4 className="text-lg font-bold text-white mb-2">Infrastructure > Tools</h4>
                   <p className="text-slate-500 text-sm">Tools need managers. Infrastructure builds your empire autonomously.</p>
                 </div>
                 <div className="p-6 glass rounded-2xl border-white/5">
@@ -256,6 +265,136 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* WHY ANSURY SECTION */}
+      <section className="py-24 relative overflow-hidden bg-slate-900/10">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-black mb-6">{t.whyTitle}</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">{t.whyDesc}</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-10 glass rounded-[2.5rem] border-white/5 hover:border-cyan-500/30 transition-all group">
+              <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <BrainCircuit className="text-cyan-400" size={32} />
+              </div>
+              <h3 className="text-2xl font-black mb-4 text-white">{t.usp1Title}</h3>
+              <p className="text-slate-400 leading-relaxed">{t.usp1Desc}</p>
+              <div className="mt-8 flex items-center text-cyan-400 font-black text-[10px] uppercase tracking-widest">
+                <span>Autonomous Engine</span>
+                <Sparkles size={12} className="ml-2 rtl:mr-2" />
+              </div>
+            </div>
+
+            <div className="p-10 glass rounded-[2.5rem] border-white/5 hover:border-cyan-500/30 transition-all group relative">
+              <div className="absolute top-6 right-6 opacity-5">
+                <Globe size={100} className="text-white" />
+              </div>
+              <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <Target className="text-cyan-400" size={32} />
+              </div>
+              <h3 className="text-2xl font-black mb-4 text-white">{t.usp2Title}</h3>
+              <p className="text-slate-400 leading-relaxed">{t.usp2Desc}</p>
+              <div className="mt-8 flex items-center text-cyan-400 font-black text-[10px] uppercase tracking-widest">
+                <span>Vision 2030 Ready</span>
+                <CheckCircle2 size={12} className="ml-2 rtl:mr-2" />
+              </div>
+            </div>
+
+            <div className="p-10 glass rounded-[2.5rem] border-white/5 hover:border-cyan-500/30 transition-all group">
+              <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <BarChart3 className="text-cyan-400" size={32} />
+              </div>
+              <h3 className="text-2xl font-black mb-4 text-white">{t.usp3Title}</h3>
+              <p className="text-slate-400 leading-relaxed">{t.usp3Desc}</p>
+              <div className="mt-8 flex items-center text-cyan-400 font-black text-[10px] uppercase tracking-widest">
+                <span>100% Attribution</span>
+                <LineChart size={12} className="ml-2 rtl:mr-2" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES SECTION */}
+      <section className="py-24 bg-slate-900/30">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-black mb-6">{t.benefitsHeading}</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto italic">{t.benefitsSub}</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5 space-y-4">
+              {SERVICES.map((s) => (
+                <div 
+                  key={s.id}
+                  onMouseEnter={() => setActiveService(s.id)}
+                  onClick={() => setActiveService(s.id)}
+                  className={`p-6 rounded-2xl cursor-pointer transition-all border ${activeService === s.id ? 'glass border-cyan-500/50 scale-[1.02] opacity-100 shadow-[0_0_20px_rgba(34,211,238,0.1)]' : 'border-transparent opacity-40 grayscale hover:opacity-60'}`}
+                >
+                  <div className="flex items-center space-x-6 rtl:space-x-reverse">
+                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${activeService === s.id ? 'bg-cyan-500' : 'bg-slate-800'}`}>
+                      {getIcon(s.icon, 24, activeService === s.id)}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-black">{s.title[lang]}</h3>
+                      <p className="text-sm text-slate-400 line-clamp-2">{s.description[lang]}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="lg:col-span-7">
+              <div className="glass rounded-[3rem] p-12 border-cyan-500/20 min-h-[500px] flex flex-col justify-center relative overflow-hidden">
+                <div className="relative z-10 animate-in fade-in slide-in-from-right-10 duration-500">
+                  <h3 className="text-4xl font-black mb-4 text-white">{SERVICES.find(s => s.id === activeService)?.title[lang]}</h3>
+                  <p className="text-lg text-slate-300 mb-10 leading-relaxed max-w-xl">
+                    {SERVICES.find(s => s.id === activeService)?.description[lang]}
+                  </p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Market Impact</h4>
+                      <p className="text-lg font-semibold text-cyan-400 leading-relaxed">
+                        {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].roi[lang]}
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Global Tech Stack</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].tools.map((t, idx) => (
+                          <span key={idx} className="px-3 py-1 bg-slate-900 rounded-lg text-xs font-bold text-slate-300 border border-white/5">{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].features[lang].map((f, idx) => (
+                      <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-white/5 flex items-center space-x-3 rtl:space-x-reverse">
+                        <CheckCircle2 size={16} className="text-cyan-500 shrink-0" />
+                        <span className="text-xs font-medium text-slate-300">{f.name}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-12 flex justify-end">
+                    <button 
+                      onClick={() => setCurrentPage('contact')}
+                      className="px-8 py-4 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 transition-all flex items-center group"
+                    >
+                      Deploy Infrastructure <ArrowUpRight className="ml-2 rtl:mr-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={18} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <StrategyGenerator />
 
       {/* TESTIMONIALS CAROUSEL */}
@@ -281,7 +420,7 @@ const App: React.FC = () => {
                       <div className="flex flex-col items-center">
                         <img 
                           src={testimonial.avatar} 
-                          alt={testimonial.name} 
+                          alt={`${testimonial.name}, CEO at ${testimonial.company}`} 
                           className="w-16 h-16 rounded-full border-2 border-cyan-500 p-0.5 mb-4 shadow-[0_0_15px_rgba(34,211,238,0.3)]" 
                         />
                         <h4 className="text-lg font-black text-white">{testimonial.name}</h4>
@@ -300,7 +439,7 @@ const App: React.FC = () => {
                   key={idx}
                   onClick={() => setTestimonialIndex(idx)}
                   className={`h-2 rounded-full transition-all duration-300 ${testimonialIndex === idx ? 'w-8 bg-cyan-500' : 'w-2 bg-slate-700'}`}
-                  aria-label={`Go to testimonial ${idx + 1}`}
+                  aria-label={`View testimonial from ${TESTIMONIALS[idx].name}`}
                 />
               ))}
             </div>
@@ -308,12 +447,14 @@ const App: React.FC = () => {
             <button 
               onClick={() => setTestimonialIndex((testimonialIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
               className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full hidden md:flex p-4 text-slate-500 hover:text-cyan-400 transition-colors"
+              aria-label="Previous Testimonial"
             >
               <ChevronLeft size={32} />
             </button>
             <button 
               onClick={() => setTestimonialIndex((testimonialIndex + 1) % TESTIMONIALS.length)}
               className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full hidden md:flex p-4 text-slate-500 hover:text-cyan-400 transition-colors"
+              aria-label="Next Testimonial"
             >
               <ChevronRight size={32} />
             </button>
@@ -331,7 +472,7 @@ const App: React.FC = () => {
             {CASE_STUDIES.map((study) => (
               <div key={study.id} className="group overflow-hidden rounded-[2.5rem] glass flex flex-col h-full text-left rtl:text-right border border-white/5 hover:border-cyan-500/30 transition-all duration-500">
                 <div className="relative h-80 overflow-hidden">
-                  <img src={study.image} alt={study.client} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                  <img src={study.image} alt={`Case study results for ${study.client}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent opacity-60"></div>
                   <div className="absolute bottom-6 left-6 rtl:left-auto rtl:right-6">
                     <span className="px-4 py-1 bg-cyan-500 text-slate-900 text-[10px] font-black uppercase tracking-widest rounded-full">{study.category[lang]}</span>
@@ -360,160 +501,76 @@ const App: React.FC = () => {
           </div>
         </div>
       </section>
-    </>
-  );
 
-  const renderServices = () => (
-    <div className="pt-24 pb-20">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
-          <h1 className="text-5xl md:text-7xl font-black mb-6">{t.benefitsHeading}</h1>
-          <p className="text-slate-400 max-w-2xl mx-auto italic text-xl">{t.benefitsSub}</p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-5 space-y-4">
-            {SERVICES.map((s) => (
-              <div 
-                key={s.id}
-                onMouseEnter={() => setActiveService(s.id)}
-                onClick={() => setActiveService(s.id)}
-                className={`p-6 rounded-2xl cursor-pointer transition-all border ${activeService === s.id ? 'glass border-cyan-500/50 scale-[1.02] opacity-100 shadow-[0_0_20px_rgba(34,211,238,0.1)]' : 'border-transparent opacity-40 grayscale hover:opacity-60'}`}
-              >
-                <div className="flex items-center space-x-6 rtl:space-x-reverse">
-                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${activeService === s.id ? 'bg-cyan-500' : 'bg-slate-800'}`}>
-                    {getIcon(s.icon, 24, activeService === s.id)}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-black">{s.title[lang]}</h3>
-                    <p className="text-sm text-slate-400 line-clamp-2">{s.description[lang]}</p>
-                  </div>
+      {/* REGIONAL CONTACT */}
+      <section id="contact-section" className="py-24 bg-slate-950">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div>
+              <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">{t.contactTitle}</h2>
+              <p className="text-xl text-slate-400 mb-12">{t.contactDesc}</p>
+              
+              <div className="space-y-8">
+                <div className="flex items-start">
+                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Mail className="text-cyan-400" /></div>
+                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Regional Liaison</h3><p className="text-xl font-bold">hello@ansurysystem.online</p></div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Phone className="text-cyan-400" /></div>
+                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Command Center</h3><p className="text-xl font-bold">+974 51182644</p></div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Globe className="text-cyan-400" /></div>
+                  <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Operational Bases</h3><p className="text-xl font-bold leading-tight">Riyadh • Dubai • Doha • Kuwait City</p></div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
 
-          <div className="lg:col-span-7">
-            <div className="glass rounded-[3rem] p-12 border-cyan-500/20 min-h-[500px] flex flex-col justify-center relative overflow-hidden">
-              <div className="relative z-10 animate-in fade-in slide-in-from-right-10 duration-500">
-                <h2 className="text-4xl font-black mb-4 text-white">{SERVICES.find(s => s.id === activeService)?.title[lang]}</h2>
-                <p className="text-lg text-slate-300 mb-10 leading-relaxed max-w-xl">
-                  {SERVICES.find(s => s.id === activeService)?.description[lang]}
-                </p>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Market Impact</h4>
-                    <p className="text-lg font-semibold text-cyan-400 leading-relaxed">
-                      {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].roi[lang]}
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Global Tech Stack</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].tools.map((t, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-slate-900 rounded-lg text-xs font-bold text-slate-300 border border-white/5">{t}</span>
-                      ))}
+            <div className="glass p-8 md:p-12 rounded-[2.5rem] border-white/10 relative">
+              <h3 className="text-2xl font-black mb-8">{t.formTitle}</h3>
+              {submitStatus === 'success' ? (
+                <div className="text-center py-20 animate-in zoom-in duration-300">
+                  <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6"><CheckCircle2 size={40} /></div>
+                  <h4 className="text-3xl font-black mb-4">Blueprint Protocol Initiated</h4>
+                  <p className="text-slate-400">A senior regional strategist will contact you within 4 hours.</p>
+                  <button onClick={() => setSubmitStatus('idle')} className="mt-8 text-cyan-400 font-bold hover:underline">Reset</button>
+                </div>
+              ) : (
+                <form onSubmit={handleContactSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label htmlFor="full-name" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Full Name</label>
+                      <input id="full-name" required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.name} onChange={(e) => setContactForm({...contactForm, name: e.target.value})} />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="company-name" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Regional Company</label>
+                      <input id="company-name" required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.company} onChange={(e) => setContactForm({...contactForm, company: e.target.value})} />
                     </div>
                   </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].features[lang].map((f, idx) => (
-                    <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-white/5 flex items-center space-x-3 rtl:space-x-reverse">
-                      <CheckCircle2 size={16} className="text-cyan-500 shrink-0" />
-                      <span className="text-xs font-medium text-slate-300">{f.name}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-12 flex justify-end">
-                  <button 
-                    onClick={() => {
-                      setCurrentPage('contact');
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                    className="px-8 py-4 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 transition-all flex items-center group"
-                  >
-                    Deploy Infrastructure <ArrowUpRight className="ml-2 rtl:mr-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={18} />
+                  <div className="space-y-2">
+                    <label htmlFor="email-address" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Business Email</label>
+                    <input id="email-address" required type="email" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.email} onChange={(e) => setContactForm({...contactForm, email: e.target.value})} />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="bottleneck-desc" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Regional Growth Bottleneck</label>
+                    <textarea id="bottleneck-desc" required rows={4} className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none resize-none" value={contactForm.message} onChange={(e) => setContactForm({...contactForm, message: e.target.value})}></textarea>
+                  </div>
+                  <button disabled={isSubmitting} className="w-full py-5 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 flex items-center justify-center space-x-2 transition-all">
+                    {isSubmitting ? <Loader2 className="animate-spin" /> : t.send}
                   </button>
-                </div>
-              </div>
+                </form>
+              )}
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-
-  const renderContact = () => (
-    <div className="pt-24 pb-20">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-          <div>
-            <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight">{t.contactTitle}</h1>
-            <p className="text-xl text-slate-400 mb-12">{t.contactDesc}</p>
-            
-            <div className="space-y-8">
-              <div className="flex items-start">
-                <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Mail className="text-cyan-400" /></div>
-                <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Regional Liaison</h3><p className="text-xl font-bold">hello@ansurysystem.online</p></div>
-              </div>
-              <div className="flex items-start">
-                <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Phone className="text-cyan-400" /></div>
-                <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Command Center</h3><p className="text-xl font-bold">+974 51182644</p></div>
-              </div>
-              <div className="flex items-start">
-                <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Globe className="text-cyan-400" /></div>
-                <div><h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-1">Operational Bases</h3><p className="text-xl font-bold leading-tight">Riyadh • Dubai • Doha • Kuwait City</p></div>
-              </div>
-            </div>
-          </div>
-
-          <div className="glass p-8 md:p-12 rounded-[2.5rem] border-white/10 relative">
-            <h3 className="text-2xl font-black mb-8">{t.formTitle}</h3>
-            {submitStatus === 'success' ? (
-              <div className="text-center py-20 animate-in zoom-in duration-300">
-                <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6"><CheckCircle2 size={40} /></div>
-                <h4 className="text-3xl font-black mb-4">Blueprint Protocol Initiated</h4>
-                <p className="text-slate-400">A senior regional strategist will contact you within 4 hours.</p>
-                <button onClick={() => setSubmitStatus('idle')} className="mt-8 text-cyan-400 font-bold hover:underline">Reset</button>
-              </div>
-            ) : (
-              <form onSubmit={handleContactSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Full Name</label>
-                    <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.name} onChange={(e) => setContactForm({...contactForm, name: e.target.value})} />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Regional Company</label>
-                    <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.company} onChange={(e) => setContactForm({...contactForm, company: e.target.value})} />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Business Email</label>
-                  <input required type="email" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.email} onChange={(e) => setContactForm({...contactForm, email: e.target.value})} />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Regional Growth Bottleneck</label>
-                  <textarea required rows={4} className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none resize-none" value={contactForm.message} onChange={(e) => setContactForm({...contactForm, message: e.target.value})}></textarea>
-                </div>
-                <button disabled={isSubmitting} className="w-full py-5 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 flex items-center justify-center space-x-2 transition-all">
-                  {isSubmitting ? <Loader2 className="animate-spin" /> : t.send}
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 
   const renderPortfolio = () => {
     const activeStudy = CASE_STUDIES[carouselIndex];
     return (
-      <div className="pt-24 pb-20">
+      <main className="pt-24 pb-20">
         <div className="container mx-auto px-6 mb-12">
           <h1 className="text-5xl md:text-7xl font-black mb-6">{t.caseStudiesTitle}</h1>
           <p className="text-xl text-slate-400 max-w-2xl">{t.caseStudiesDesc}</p>
@@ -521,7 +578,7 @@ const App: React.FC = () => {
 
         <div className="relative w-full h-[600px] md:h-[750px] overflow-hidden bg-slate-950 mb-32">
           <div className="absolute inset-0 transition-all duration-1000">
-            <img key={activeStudy.id} src={activeStudy.image} className="w-full h-full object-cover opacity-40" alt={activeStudy.client} />
+            <img key={activeStudy.id} src={activeStudy.image} className="w-full h-full object-cover opacity-40" alt={`Operational results for ${activeStudy.client}`} />
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/40 to-transparent rtl:bg-gradient-to-l"></div>
           
@@ -554,32 +611,31 @@ const App: React.FC = () => {
                   Deploy These Results for My Business
                 </button>
                 <div className="flex space-x-2 rtl:space-x-reverse">
-                  <button onClick={() => setCarouselIndex((carouselIndex - 1 + CASE_STUDIES.length) % CASE_STUDIES.length)} className="p-4 rounded-full border border-white/10 hover:bg-white/5 text-white"><ChevronLeft size={24} className="rtl:rotate-180"/></button>
-                  <button onClick={() => setCarouselIndex((carouselIndex + 1) % CASE_STUDIES.length)} className="p-4 rounded-full border border-white/10 hover:bg-white/5 text-white"><ChevronRight size={24} className="rtl:rotate-180"/></button>
+                  <button onClick={() => setCarouselIndex((carouselIndex - 1 + CASE_STUDIES.length) % CASE_STUDIES.length)} className="p-4 rounded-full border border-white/10 hover:bg-white/5 text-white" aria-label="Previous Case Study"><ChevronLeft size={24} className="rtl:rotate-180"/></button>
+                  <button onClick={() => setCarouselIndex((carouselIndex + 1) % CASE_STUDIES.length)} className="p-4 rounded-full border border-white/10 hover:bg-white/5 text-white" aria-label="Next Case Study"><ChevronRight size={24} className="rtl:rotate-180"/></button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </main>
     );
   };
 
   return (
     <div className={`min-h-screen ${lang === 'ar' ? 'font-arabic' : ''}`}>
-      <Navbar currentPage={currentPage} setPage={setCurrentPage} lang={lang} toggleLang={toggleLang} />
-      <main>
-        {currentPage === 'home' && renderHome()}
-        {currentPage === 'portfolio' && renderPortfolio()}
-        {currentPage === 'services' && renderServices()}
-        {currentPage === 'contact' && renderContact()}
-      </main>
+      <header>
+        <Navbar currentPage={currentPage} setPage={setCurrentPage} lang={lang} toggleLang={toggleLang} />
+      </header>
+      
+      {currentPage === 'portfolio' ? renderPortfolio() : renderHome()}
       
       {/* WhatsApp Regional Connector */}
       <a 
         href={`https://wa.me/97451182644?text=${encodeURIComponent(lang === 'en' ? 'Hello Ansury Systems, I would like to discuss a regional growth infrastructure for my business.' : 'مرحباً أنسوري للأنظمة، أود مناقشة بنية تحتية للنمو الإقليمي لأعمالي.')}`}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Connect with us on WhatsApp"
         className="fixed bottom-8 left-8 z-[100] group flex items-center"
       >
         <div className="mr-3 rtl:mr-0 rtl:ml-3 px-4 py-2 bg-slate-900/80 backdrop-blur-md border border-white/10 text-white text-xs font-bold rounded-full opacity-0 group-hover:opacity-100 transition-all transform translate-x-4 group-hover:translate-x-0">
@@ -607,10 +663,10 @@ const App: React.FC = () => {
                 {lang === 'en' ? 'The Middle East\'s dominant force in autonomous growth infrastructure. Scaling Khaleeji businesses through AI synchronization.' : 'القوة المهيمنة في الشرق الأوسط في البنية التحتية للنمو الذاتي. توسيع نطاق الشركات الخليجية من خلال مزامنة الذكاء الاصطناعي.'}
               </p>
               <div className="flex space-x-4 rtl:space-x-reverse">
-                <a href="https://linkedin.com/company/ansury-systems" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-900 rounded-xl text-slate-500 hover:text-cyan-400 border border-white/5 transition-all">
+                <a href="https://linkedin.com/company/ansury-systems" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-3 bg-slate-900 rounded-xl text-slate-500 hover:text-cyan-400 border border-white/5 transition-all">
                   <Linkedin size={20} />
                 </a>
-                <a href="https://twitter.com/ansurysystems" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-900 rounded-xl text-slate-500 hover:text-cyan-400 border border-white/5 transition-all">
+                <a href="https://twitter.com/ansurysystems" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="p-3 bg-slate-900 rounded-xl text-slate-500 hover:text-cyan-400 border border-white/5 transition-all">
                   <Twitter size={20} />
                 </a>
               </div>
@@ -631,7 +687,7 @@ const App: React.FC = () => {
             </div>
           </div>
           <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-slate-600 font-bold uppercase tracking-widest">
-            <p>© 2024 Ansury Systems LLC. Registered across the GCC.</p>
+            <p>© 2024 Ansury Systems LLC. Registered across the GCC. All rights reserved.</p>
           </div>
         </div>
       </footer>

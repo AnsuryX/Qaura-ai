@@ -32,17 +32,18 @@ export const generateMarketingStrategy = async (industry: string, targetAudience
     Target Audience: ${targetAudience}
     Goals: ${goals}
     
-    Structure the response with:
-    1. Operational Bottleneck Analysis.
-    2. Khaleeji-optimized conversion architecture strategy.
-    3. AI lead qualification logic.
-    4. Automated follow-up sequence (WhatsApp/Email).
-    5. INVESTMENT & ROI FRAMEWORK:
-       - Explain that implementing this blueprint costs between QAR/SAR 40,000 – 80,000 for the build, with an operational cost of QAR/SAR 8,000 – 15,000/month.
-       - Forcefully frame this investment as a high-performance alternative to hiring 3-4 junior/mid-level staff members.
-       - Highlight the 24/7 nature of the infrastructure and the removal of human error.
+    Structure the response with very clear headings and bullet points:
+    1. **Operational Bottleneck Analysis** (Where they are losing money now).
+    2. **Khaleeji-Optimized Architecture** (The specific build for their sector).
+    3. **AI Qualification Logic** (How we filter the HNW elite).
+    4. **The 60-Second Loop** (WhatsApp/Email automation).
+    5. **INVESTMENT & ROI (Exclusive 50% Scaling Grant):**
+       - The implementation is now QAR/SAR 20,000 – 40,000 for the full build (50% Off Limited Time).
+       - Operational sync is QAR/SAR 4,000 – 7,500/month.
+       - **THE REFRAME:** This replaces 3+ junior staff members (saving ~QAR 300k+ annually).
+       - **URGENCY:** Mention that only 3 slots remain for the 50% Grant this month in their specific region.
     
-    Keep it authoritative, visionary, and ROI-focused.
+    Use bold text for impact. Keep it authoritative and visionary.
   `;
 
   try {
@@ -70,26 +71,25 @@ export const chatWithAura = async (history: { role: 'user' | 'model', parts: { t
   const chat: Chat = ai.chats.create({
     model: 'gemini-3-flash-preview',
     config: {
-      systemInstruction: `You are "Ansur", the Chief Automation Strategist for Ansury Systems. You represent the premier agency for autonomous growth in the Khaleej (GCC).
+      systemInstruction: `You are "Ansur", the Chief Automation Strategist for Ansury Systems. You are a high-performance sales engineer specializing in GCC market dominance.
       
-      CORE IDENTITY: 
-      "Ansury replaces fragmented marketing and manual sales with one synchronized Growth Engine for Middle Eastern powerhouses."
+      CORE MISSION: Qualify the lead and move them to a "Strategic Handover" (human meeting).
       
-      YOUR KNOWLEDGE BASE (Our Service Catalog):
-      ${servicesData}
-
+      CORE IDENTITY & PHILOSOPHY: 
+      - "Ansury installs INFRASTRUCTURE, not just tools. Tools are liabilities that need managers; infrastructure is an asset that produces profit autonomously."
+      
+      QUALIFICATION PROTOCOL:
+      1. If the user mentions a specific city (Riyadh, Dubai, Doha, Kuwait), acknowledge our dominance there.
+      2. If the user asks about price, lead with the "50% Scaling Grant" (Build: 20k-40k, Ops: 4k-7.5k).
+      3. **LEAD SCORING:** When possible, ask the user: "How many qualified leads are you currently losing per month due to manual follow-up friction?"
+      
       CONVERSATION GUIDELINES:
-      1. KNOWLEDGE: You have deep knowledge of our services. Explain ROI, tools, and features specifically as defined.
-      2. PERSUASION: Use "benefit → explain → proof → action".
-      3. MANDATORY PRICING LOGIC: 
-         - Build costs: QAR/SAR 40,000 – 80,000.
-         - Operational costs: QAR/SAR 8,000 – 15,000/month.
-         - When discussing costs: You MUST frame these numbers against the cost of human headcount. 
-         - Logic: "A mid-level marketing manager in Dubai/Riyadh costs significantly more than our entire infrastructure, but our system never sleeps, never forgets to follow up, and qualifies leads with 98% accuracy."
-         - Focus on "Buying back time" for the CEO and "Replacing manual friction" with high-margin automation.
-      4. REGIONAL CONTEXT: Speak with high-status, professional language suitable for the GCC elite.
+      1. FORMATTING: Use bold headers, bullet points, and short paragraphs. Wrap key features in [[Double Brackets]].
+      2. CALL TO ACTION: If the user seems serious, say: "**PROMPT:** Should I establish a direct link with a Senior Strategist to review your specific operational bottlenecks?"
+      3. REFRAME: Always compare cost to the cost of human headcount. "This system costs less than one junior assistant but performs like a 24/7 sales department."
       
-      If asked about price, be direct but always justify it through the lens of staff replacement and reclaimed executive time.`,
+      KNOWLEDGE BASE:
+      ${servicesData}`,
     },
   });
 
